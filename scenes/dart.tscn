@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://qi2ahe77qey4"]
+
+[ext_resource type="Texture2D" uid="uid://cpofpbi4l2l7l" path="res://Assets/darts.png" id="1_b8gfu"]
+[ext_resource type="Script" path="res://towers/scripts/dart.gd" id="1_g8a5k"]
+[ext_resource type="Script" path="res://shaders/scripts/range.gd" id="2_36mqd"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ie1hr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_am05h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktkjf"]
+atlas = ExtResource("1_b8gfu")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8oli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktkjf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ahtem"]
+
+[node name="dart_monkey" type="Area2D"]
+script = ExtResource("1_g8a5k")
+
+[node name="RangeCol" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeCol"]
+material = SubResource("CanvasItemMaterial_ie1hr")
+scale = Vector2(20, 20)
+shape = SubResource("CircleShape2D_am05h")
+script = ExtResource("2_36mqd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y8oli")
+animation = &"idle"
+
+[node name="PlacementCol" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacementCol"]
+scale = Vector2(6, 6)
+shape = SubResource("CircleShape2D_ahtem")
+
+[connection signal="body_entered" from="PlacementCol" to="." method="_on_placement_col_body_entered"]
