@@ -3,7 +3,7 @@ var temp_global_money
 var temp_global_hit_enemy
 var anim
 var dying
-var speed = 4
+var speed = 11
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():

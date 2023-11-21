@@ -3,7 +3,7 @@ var temp_global_money
 var temp_global_hit_enemy
 var anim
 var dying
-var speed = 4
+var speed = 5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
@@ -26,3 +26,4 @@ func _on_hitbox_body_entered(body):
 func _on_poped_timeout():
 	self.queue_free()
 	$poped.stop()
+

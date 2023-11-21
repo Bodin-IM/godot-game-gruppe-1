@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cidwwgq7subvb"]
+[gd_scene load_steps=5 format=3 uid="uid://dfujfye6q3mcl"]
 
-[ext_resource type="Script" path="res://scripts/Enemies/blue_baloon.gd" id="1_ifywd"]
+[ext_resource type="Script" path="res://scripts/Enemies/Yellow_baloon.gd" id="1_tsuej"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_topp8"]
 radius = 53.0
@@ -23,8 +23,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Blue_Baloon" type="Area2D"]
-script = ExtResource("1_ifywd")
+[node name="Yellow_Baloon" type="Area2D"]
+script = ExtResource("1_tsuej")
 
 [node name="Hitbox" type="Area2D" parent="."]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cidwwgq7subvb"]
+[gd_scene load_steps=5 format=3 uid="uid://k27sd1igu8va"]
 
-[ext_resource type="Script" path="res://scripts/Enemies/blue_baloon.gd" id="1_ifywd"]
+[ext_resource type="Script" path="res://scripts/Enemies/Pink_baloon.gd" id="1_jibjt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_topp8"]
 radius = 53.0
@@ -23,8 +23,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Blue_Baloon" type="Area2D"]
-script = ExtResource("1_ifywd")
+[node name="Pink_Baloon" type="Area2D"]
+script = ExtResource("1_jibjt")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -38,7 +38,7 @@ shape = SubResource("CapsuleShape2D_nfp0m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a1ns0")
-animation = &"idle"
+animation = &"pop"
 
 [node name="poped" type="Timer" parent="."]
 
