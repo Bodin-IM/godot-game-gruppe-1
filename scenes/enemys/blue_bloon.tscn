@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cidwwgq7subvb"]
+[gd_scene load_steps=5 format=3 uid="uid://btxuo3plsbju"]
 
-[ext_resource type="Script" path="res://scripts/Enemies/blue_baloon.gd" id="1_ifywd"]
+[ext_resource type="Script" path="res://scripts/Enemies/blue_bloon.gd" id="1_donda"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_topp8"]
 radius = 53.0
@@ -24,7 +24,7 @@ animations = [{
 }]
 
 [node name="Blue_Baloon" type="Area2D"]
-script = ExtResource("1_ifywd")
+script = ExtResource("1_donda")
 
 [node name="Hitbox" type="Area2D" parent="."]
 

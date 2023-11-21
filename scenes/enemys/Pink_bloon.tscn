@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://k27sd1igu8va"]
+[gd_scene load_steps=5 format=3 uid="uid://dwk2myj5nxiv"]
 
-[ext_resource type="Script" path="res://scripts/Enemies/Pink_baloon.gd" id="1_jibjt"]
+[ext_resource type="Script" path="res://scripts/Enemies/Pink_bloon.gd" id="1_8ajkp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_topp8"]
 radius = 53.0
@@ -24,7 +24,7 @@ animations = [{
 }]
 
 [node name="Pink_Baloon" type="Area2D"]
-script = ExtResource("1_jibjt")
+script = ExtResource("1_8ajkp")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
