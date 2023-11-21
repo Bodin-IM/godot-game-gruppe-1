@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cidwwgq7subvb"]
+
+[ext_resource type="Script" path="res://scripts/Enemies/blue_baloon.gd" id="1_ifywd"]
+[ext_resource type="Texture2D" uid="uid://dxmbwwayqmjlj" path="res://Assets/red_bln.png" id="2_vse0p"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_topp8"]
+radius = 53.0
+height = 144.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nfp0m"]
+radius = 53.0
+height = 144.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4gdo"]
+atlas = ExtResource("2_vse0p")
+region = Rect2(0, 0, 96, 127)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1ns0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4gdo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"pop",
+"speed": 5.0
+}]
+
+[node name="Blue_Baloon" type="Area2D"]
+script = ExtResource("1_ifywd")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_topp8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_nfp0m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a1ns0")
+animation = &"idle"
+
+[node name="poped" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="poped" to="." method="_on_poped_timeout"]
