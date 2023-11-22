@@ -20,7 +20,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="testObj" type="Area2D"]
+[node name="testObj" type="Area2D" groups=["mainCol"]]
 script = ExtResource("1_fx3qo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

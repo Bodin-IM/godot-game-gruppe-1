@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://b64ahqcgprwjx"]
+[gd_scene load_steps=11 format=3 uid="uid://b64ahqcgprwjx"]
 
-[ext_resource type="Script" path="res://scripts/towers/dart/dart.gd" id="1_k28yw"]
 [ext_resource type="Script" path="res://scripts/towers/dart/RangeCol.gd" id="2_jburb"]
 [ext_resource type="Texture2D" uid="uid://cpofpbi4l2l7l" path="res://Assets/darts.png" id="3_g0tmt"]
 [ext_resource type="Script" path="res://scripts/towers/dart/mainCol.gd" id="4_ldh6a"]
@@ -33,8 +32,9 @@ height = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ahtem"]
 
 [node name="dart_monkey" type="Area2D"]
+z_index = 2
 position = Vector2(436, 234)
-script = ExtResource("1_k28yw")
+scale = Vector2(0.8, 0.8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
@@ -56,12 +56,20 @@ scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_31bq7")
 texture = SubResource("CanvasTexture_p4t5s")
 
-[node name="main" type="Area2D" parent="."]
+[node name="main" type="Area2D" parent="." groups=["mainCol"]]
 script = ExtResource("4_ldh6a")
 
 [node name="mainCol" type="CollisionShape2D" parent="main"]
 scale = Vector2(6, 6)
 shape = SubResource("CircleShape2D_ahtem")
 
+[node name="attackCooldown" type="Timer" parent="."]
+wait_time = 1.115
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+z_index = 2
+
+[connection signal="area_entered" from="rangeCol" to="main" method="_on_range_col_area_entered"]
 [connection signal="area_entered" from="main" to="main" method="_on_area_entered"]
 [connection signal="area_exited" from="main" to="main" method="_on_area_exited"]
+[connection signal="timeout" from="attackCooldown" to="main" method="_on_attack_cooldown_timeout"]
