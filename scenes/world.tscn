@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxoneiwh6aj14"]
+[gd_scene load_steps=5 format=3 uid="uid://bxoneiwh6aj14"]
 
 [ext_resource type="PackedScene" uid="uid://b64ahqcgprwjx" path="res://scenes/dart.tscn" id="1_3rf3q"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_r7bs1"]
 [ext_resource type="PackedScene" uid="uid://d3mksoesx8d4a" path="res://scenes/test_obj.tscn" id="2_58ph8"]
+[ext_resource type="PackedScene" uid="uid://cidwwgq7subvb" path="res://scenes/enemys/blue_baloon.tscn" id="4_eqexr"]
 
 [node name="map1" type="Node2D"]
 script = ExtResource("1_r7bs1")
@@ -17,3 +18,5 @@ format = 2
 
 [node name="testObj2" parent="." instance=ExtResource("2_58ph8")]
 position = Vector2(-30, -99)
+
+[node name="Blue_Baloon" parent="." instance=ExtResource("4_eqexr")]
