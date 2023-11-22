@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgt8hwwcgj3na"]
 
-[ext_resource type="Texture2D" uid="uid://dtuic4182673u" path="res://assets/main.png" id="1_2r4x1"]
+[ext_resource type="Texture2D" uid="uid://dtuic4182673u" path="res://Assets/main.png" id="1_2r4x1"]
 [ext_resource type="Script" path="res://scripts/test_enemy.gd" id="1_lg2i3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kakys"]
