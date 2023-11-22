@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxoneiwh6aj14"]
+[gd_scene load_steps=5 format=3 uid="uid://bxoneiwh6aj14"]
 
 [ext_resource type="PackedScene" uid="uid://b64ahqcgprwjx" path="res://scenes/dart.tscn" id="1_3rf3q"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_r7bs1"]
 [ext_resource type="PackedScene" uid="uid://d3mksoesx8d4a" path="res://scenes/test_obj.tscn" id="2_58ph8"]
-[ext_resource type="PackedScene" uid="uid://cgt8hwwcgj3na" path="res://scenes/test_enemy.tscn" id="4_f3srh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oba3s"]
 font_size = 76
@@ -23,8 +22,6 @@ format = 2
 
 [node name="testObj2" parent="." instance=ExtResource("2_58ph8")]
 position = Vector2(-69, -357)
-
-[node name="testEnemy" parent="." instance=ExtResource("4_f3srh")]
 
 [node name="Timer" type="Timer" parent="."]
 
