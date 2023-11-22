@@ -14,6 +14,9 @@ func _process(delta):
 		anim.play("pop")
 	else:
 		anim.play("idle")
+		
+	if Input.is_action_just_pressed("ui_up"): #Testing instence remove later
+		$poped.start()
 
 
 func _on_hitbox_body_entered(body):
@@ -24,5 +27,9 @@ func _on_hitbox_body_entered(body):
 
 
 func _on_poped_timeout():
+	var ballon = preload("res://scenes/enemys/red_bloon.tscn")
+	var instance = ballon.instantiate()
+	instance.position = position
+	get_parent().get_child().add_child(instance)
 	self.queue_free()
 	$poped.stop()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cff0abcvoserp"]
+[gd_scene load_steps=7 format=3 uid="uid://cff0abcvoserp"]
 
-[ext_resource type="Script" path="res://scripts/Enemies/red_bloon.gd" id="1_o3opx"]
+[ext_resource type="Script" path="res://scripts/Enemies/red_bloon.gd" id="1_qrwuy"]
+[ext_resource type="Texture2D" uid="uid://dxmbwwayqmjlj" path="res://Assets/red_bln.png" id="2_1i8hl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_topp8"]
 radius = 53.0
@@ -10,21 +11,23 @@ height = 144.0
 radius = 53.0
 height = 144.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bobiu"]
+atlas = ExtResource("2_1i8hl")
+region = Rect2(0, 0, 96, 127)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_a1ns0"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"pop",
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bobiu")
+}],
+"loop": false,
+"name": &"Initial_color",
 "speed": 5.0
 }]
 
 [node name="Red_Baloon" type="Area2D"]
-script = ExtResource("1_o3opx")
+script = ExtResource("1_qrwuy")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -38,9 +41,6 @@ shape = SubResource("CapsuleShape2D_nfp0m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a1ns0")
-animation = &"idle"
-
-[node name="poped" type="Timer" parent="."]
+animation = &"Initial_color"
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="timeout" from="poped" to="." method="_on_poped_timeout"]
