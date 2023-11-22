@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgt8hwwcgj3na"]
+
+[ext_resource type="Texture2D" uid="uid://dtuic4182673u" path="res://assets/main.png" id="1_2r4x1"]
+[ext_resource type="Script" path="res://scripts/test_enemy.gd" id="1_lg2i3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kakys"]
+atlas = ExtResource("1_2r4x1")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_28ya6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kakys")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_81tge"]
+radius = 20.316
+height = 54.1761
+
+[node name="testEnemy" type="Area2D" groups=["Enemys"]]
+position = Vector2(-51, 568)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_lg2i3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_28ya6")
+
+[node name="mainCol" type="CollisionShape2D" parent="."]
+scale = Vector2(2.215, 2.215)
+shape = SubResource("CapsuleShape2D_81tge")
