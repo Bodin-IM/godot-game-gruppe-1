@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjh0qdgothtnu"]
 
-[ext_resource type="PackedScene" uid="uid://cff0abcvoserp" path="res://scenes/enemys/Red_bloon.tscn" id="2_3rtru"]
+[ext_resource type="PackedScene" uid="uid://cff0abcvoserp" path="res://scenes/enemys/red_bloon.tscn" id="2_3rtru"]
 
 [sub_resource type="Curve2D" id="Curve2D_nae8w"]
 _data = {
