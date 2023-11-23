@@ -2,7 +2,7 @@ extends Area2D
 var temp_global_money
 var temp_global_life = 100
 var anim
-var damaged
+var damage = 1
 var speed = 3
 var path_follow
 
