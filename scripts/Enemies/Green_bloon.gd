@@ -3,9 +3,8 @@ var temp_global_money
 var temp_global_life = 100
 var anim
 var damage = 3
-var speed = 3
+var speed = 3.6
 var path_follow
-var path_start
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():

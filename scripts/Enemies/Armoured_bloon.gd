@@ -3,7 +3,7 @@ var temp_global_money
 var temp_global_life = 100
 var anim
 var damage = 4
-var speed = 3
+var speed = 2
 var path_follow
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

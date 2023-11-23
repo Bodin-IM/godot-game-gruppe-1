@@ -43,4 +43,8 @@ shape = SubResource("CapsuleShape2D_nfp0m")
 sprite_frames = SubResource("SpriteFrames_a1ns0")
 animation = &"Initial_color"
 
+[node name="poped" type="Timer" parent="."]
+wait_time = 0.001
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="poped" to="." method="_on_poped_timeout"]
