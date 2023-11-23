@@ -5,6 +5,7 @@ var anim
 var damage = 3
 var speed = 3
 var path_follow
+var path_start
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
