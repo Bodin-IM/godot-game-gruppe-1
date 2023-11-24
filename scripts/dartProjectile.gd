@@ -8,6 +8,7 @@ var audioplayer
 var cols = 0
 
 func _ready():
+	self.z_index = 1
 	audioplayer = get_parent().get_node("AudioStreamPlayer2D")
 	self.name = "dart"
 	parRotation = get_parent().get_node("AnimatedSprite2D").rotation_degrees-100

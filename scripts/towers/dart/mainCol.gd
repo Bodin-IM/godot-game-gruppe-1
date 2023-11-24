@@ -14,6 +14,7 @@ var animatedSprite
 var meshNode
 var attackCooldown
 var rangeCol
+var testVar = 0
 
 func _ready():
 	audioPlayer = $AudioStreamPlayer2D
@@ -25,6 +26,7 @@ func _ready():
 	attackCooldown.start()
 
 func _process(_delta):
+	#print(testVar)
 	if placed:
 		var nearest_body
 		var arr = getEnemysInRange()
@@ -103,8 +105,6 @@ func _on_range_col_area_entered(body):
 		if body.is_in_group("Enemys"):
 			pass
 
-func _on_attack_cooldown_timeout():
-	start_attack()
 	
 func start_attack():
 	if placed:
@@ -121,3 +121,7 @@ func attack():
 	var instance = dart.instantiate()
 	self.add_child(instance)
 	print(get_children())
+
+
+func _on_attack_cooldown_timeout():
+	start_attack()

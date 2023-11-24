@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://87r0dqtwyunw"
-path="res://.godot/imported/tower_place.wav-ede23593ab9b1cd3267ecc4a1a989fb4.sample"
+path="res://.godot/imported/tower_place.wav-67acd13fc4f39d31ee0d2e2973ad8967.sample"
 
 [deps]
 
-source_file="res://Assets/tower_place.wav"
-dest_files=["res://.godot/imported/tower_place.wav-ede23593ab9b1cd3267ecc4a1a989fb4.sample"]
+source_file="res://assets/tower_place.wav"
+dest_files=["res://.godot/imported/tower_place.wav-67acd13fc4f39d31ee0d2e2973ad8967.sample"]
 
 [params]
 

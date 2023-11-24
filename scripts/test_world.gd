@@ -1,4 +1,5 @@
 extends Node2D
+var hasSelectedItem = false
 
 func _ready():
 	pass
@@ -10,6 +11,8 @@ func _on_timer_timeout():
 func _process(_delta):
 	if Input.is_action_just_pressed("pressS"):
 		spawn_ballon()
+	if Input.is_action_just_pressed("e"):
+		get_node("dart_monkey").testVar = 1
 	
 func spawn_ballon():
 	print("spawned")
