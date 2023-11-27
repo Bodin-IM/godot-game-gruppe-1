@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cxim2ulmtmbh8"]
+[gd_scene load_steps=37 format=3 uid="uid://cxim2ulmtmbh8"]
 
 [ext_resource type="Texture2D" uid="uid://blycju4s2yvvb" path="res://tilemap assets/Trees_Bushes.png" id="1_1opco"]
 [ext_resource type="Texture2D" uid="uid://r3gsaq0l1pnt" path="res://tilemap assets/Tileset_Road.png" id="2_jn6qp"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dflbnm02l2ift" path="res://tilemap assets/Barrel_2.png" id="8_ypchp"]
 [ext_resource type="Texture2D" uid="uid://bpyfovep1l2w1" path="res://tilemap assets/Banner_1.png" id="9_vvdax"]
 [ext_resource type="Texture2D" uid="uid://dxjxfof0k5ih6" path="res://tilemap assets/Islands v0.2/terrain.png" id="10_ec2en"]
+[ext_resource type="PackedScene" uid="uid://bequax7o27icx" path="res://scenes/path_hitbox.tscn" id="13_ufuen"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qd751"]
 texture = ExtResource("1_1opco")
@@ -1829,6 +1830,39 @@ sources/9 = SubResource("TileSetAtlasSource_p343j")
 sources/10 = SubResource("TileSetAtlasSource_xe7u6")
 sources/11 = SubResource("TileSetAtlasSource_2o2tu")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l448j"]
+size = Vector2(137.706, 29.2941)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8bqy"]
+size = Vector2(69, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7t5wi"]
+size = Vector2(93.1764, 31.2941)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxbij"]
+size = Vector2(30.1177, 158.588)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvt6"]
+size = Vector2(208, 28.3529)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_247bq"]
+size = Vector2(30.5882, 224.471)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4cjx"]
+size = Vector2(96.4706, 30.1177)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efk54"]
+size = Vector2(30.5883, 94.1177)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfpm7"]
+size = Vector2(198.588, 31.5294)
+
+[sub_resource type="Curve2D" id="Curve2D_q2w7t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -42.8235, 118.588, 0, 0, 0, 0, 122.353, 119.059, 0, 0, 0, 0, 121.882, 184, 0, 0, 0, 0, 215.529, 183.059, 0, 0, 0, 0, 216.941, 25.8824, 0, 0, 0, 0, 425.882, 26.3529, 0, 0, 0, 0, 425.882, 251.765, 0, 0, 0, 0, 325.647, 252.706, 0, 0, 0, 0, 325.647, 148.706, 0, 0, 0, 0, 551.529, 148.706)
+}
+point_count = 10
+
 [node name="map1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1841,13 +1875,98 @@ layer_1/name = "path"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
+layer_1/y_sort_origin = 1
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(458752, 131081, 8, 458753, 131081, 8, 458754, 131081, 8, 458755, 131081, 8, 458756, 131081, 8, 458757, 131081, 8, 720905, 131081, 8, 720906, 131081, 8, 720907, 131081, 8, 720908, 131081, 8, 720909, 131081, 8, 655373, 131081, 8, 524301, 131081, 8, 589837, 131081, 8, 458765, 131081, 8, 393229, 131081, 8, 327693, 131081, 8, 262157, 131081, 8, 196621, 131081, 8, 131085, 131081, 8, 65550, 131081, 8, 65551, 131081, 8, 65552, 131081, 8, 65553, 131081, 8, 65549, 131081, 8, 65554, 131081, 8, 65555, 131081, 8, 65556, 131081, 8, 65557, 131081, 8, 65558, 131081, 8, 65559, 131081, 8, 65560, 131081, 8, 65561, 131081, 8, 65562, 131081, 8, 131098, 131081, 8, 196634, 131081, 8, 262170, 131081, 8, 327706, 131081, 8, 393242, 131081, 8, 458778, 131081, 8, 524314, 131081, 8, 589850, 131081, 8, 655386, 131081, 8, 720922, 131081, 8, 786458, 131081, 8, 851994, 131081, 8, 917530, 131081, 8, 983066, 131081, 8, 983065, 131081, 8, 983064, 131081, 8, 983063, 131081, 8, 983062, 131081, 8, 983061, 131081, 8, 917524, 131081, 8, 851988, 131081, 8, 786452, 131081, 8, 720916, 131081, 8, 655380, 131081, 8, 589844, 131081, 8, 589845, 131081, 8, 589846, 131081, 8, 589847, 131081, 8, 589848, 131081, 8, 589849, 131081, 8, 589851, 131081, 8, 589852, 131081, 8, 589853, 131081, 8, 589854, 131081, 8, 589855, 131081, 8, 589856, 131081, 8, 589857, 131081, 8, 524288, 851977, 7, 524289, 851977, 7, 524290, 851977, 7, 524291, 851977, 7, 524292, 851977, 7, 524293, 851977, 7, 786441, 851977, 7, 786442, 851977, 7, 786443, 851977, 7, 786444, 851977, 7, 786445, 851977, 7, 786446, 1114121, 9, 720910, 786441, 8, 655374, 786441, 8, 589838, 786441, 8, 524302, 786441, 8, 458766, 786441, 8, 393230, 786441, 8, 327694, 786441, 8, 262158, 786441, 8, 196622, 786441, 8, 131086, 786441, 7, 131087, 851977, 7, 131088, 851977, 7, 131089, 851977, 7, 131090, 851977, 7, 131091, 851977, 7, 131092, 851977, 7, 131093, 851977, 7, 131094, 851977, 7, 131095, 851977, 7, 131096, 851977, 7, 131097, 917513, 7, 196633, 917513, 8, 262169, 917513, 8, 327705, 917513, 8, 393241, 917513, 8, 458777, 917513, 8, 524313, 917513, 9, 524312, 851977, 9, 524311, 851977, 9, 524310, 851977, 9, 524309, 851977, 9, 524308, 851977, 9, 524307, 1048585, 8, 589843, 917513, 8, 655379, 917513, 8, 720915, 917513, 8, 786451, 917513, 8, 851987, 917513, 8, 917523, 917513, 8, 983059, 917513, 8, 1048595, 1048585, 9, 1048596, 851977, 7, 1048597, 851977, 7, 1048598, 851977, 7, 1048599, 851977, 7, 1048600, 851977, 7, 1048601, 851977, 7, 1048602, 851977, 7, 1048603, 1114121, 9, 983067, 786441, 8, 917531, 786441, 8, 851995, 786441, 8, 786459, 786441, 8, 720923, 786441, 8, 655387, 786441, 7, 655388, 851977, 7, 655389, 851977, 7, 655390, 851977, 7, 655391, 851977, 7, 655392, 851977, 7, 655393, 851977, 7, 393216, 851977, 9, 393217, 851977, 9, 393218, 851977, 9, 393219, 851977, 9, 393220, 851977, 9, 393221, 851977, 9, 655371, 851977, 9, 655372, 917513, 9, 589836, 917513, 8, 524300, 917513, 8, 458764, 917513, 8, 393228, 917513, 8, 327692, 917513, 8, 262156, 917513, 8, 196620, 917513, 8, 131084, 917513, 8, 65548, 917513, 8, 12, 1048585, 8, 13, 851977, 9, 14, 851977, 9, 15, 851977, 9, 16, 851977, 9, 17, 851977, 9, 18, 851977, 9, 19, 851977, 9, 20, 851977, 9, 21, 851977, 9, 22, 851977, 9, 23, 851977, 9, 24, 851977, 9, 25, 851977, 9, 26, 851977, 9, 27, 1114121, 8, 65563, 786441, 8, 131099, 786441, 8, 196635, 786441, 8, 262171, 786441, 8, 327707, 786441, 8, 393243, 786441, 8, 458779, 786441, 8, 524315, 786441, 9, 524316, 851977, 9, 524317, 851977, 9, 524318, 851977, 9, 524319, 851977, 9, 524320, 851977, 9, 524321, 851977, 9, 655381, 786441, 7, 655385, 917513, 7, 917525, 786441, 9, 917529, 917513, 9, 851993, 917513, 8, 786457, 917513, 8, 720921, 917513, 8, 655384, 851977, 7, 655383, 851977, 7, 655382, 851977, 7, 720917, 786441, 8, 786453, 786441, 8, 851989, 786441, 8, 917526, 851977, 9, 917527, 851977, 9, 917528, 851977, 9, 983060, 131081, 8, 458758, 131081, 8, 720904, 131081, 8, 720903, 131081, 8, 655367, 131081, 8, 589831, 131081, 8, 524295, 131081, 8, 458759, 131081, 8, 655370, 851977, 9, 655369, 851977, 9, 655368, 786441, 9, 589832, 786441, 8, 524296, 786441, 8, 458760, 786441, 8, 393224, 1114121, 8, 393223, 851977, 9, 393222, 851977, 9, 524294, 917513, 7, 589830, 917513, 8, 655366, 917513, 8, 720902, 917513, 8, 786438, 1048585, 9, 786439, 851977, 7, 786440, 851977, 7)
 layer_2/name = "props"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
+layer_2/y_sort_enabled = true
+layer_2/y_sort_origin = 2
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(917508, 655370, 3, 720900, 655370, 3, 917506, 655370, 3, 1114121, 655370, 3, 1048591, 655370, 3, 786448, 655370, 3, 589840, 655370, 3, 524304, 655370, 3, 458767, 655370, 3, 393231, 655370, 3, 393232, 655370, 3, 393235, 655370, 3, 327702, 655370, 3, 262164, 458762, 13, 196624, 655370, 3, 196615, 655370, 3, 131079, 655370, 3, 131078, 655370, 3, 131077, 655370, 3, 196612, 655370, 3, 262146, 655370, 3, 327682, 655370, 3, 65543, 1638411, 12, 4, 655370, 3, 131100, 655370, 3, 31, 655370, 3, 30, 655370, 3, 327710, 458762, 13, 262175, 655370, 3, 196640, 655370, 3, 720926, 655370, 3, 917533, 655370, 3, 983069, 655370, 3, 983068, 655370, 3, 1114140, 655370, 3, 1048607, 458762, 9, 1179680, 655370, 3, 917515, 655370, 3, 720913, 458762, 13, 1048585, 655370, 1, 1048584, 524298, 15, 1048583, 655370, 1, 786436, 655370, 1, 851972, 655370, 1, 851971, 655370, 1, 131083, 655370, 1, 131082, 655370, 1, 1114144, 786442, 3, 1114145, 786442, 3, 32, 458762, 9, 196641, 458762, 9, 786465, 458762, 9, 917505, 458762, 9, 1048580, 458762, 9, 131075, 458762, 13, 720901, 458762, 13, 1114125, 458762, 13, 393233, 458762, 9, 262148, 524298, 15, 196616, 524298, 15, 65566, 524298, 15)
+
+[node name="path hit boxes" type="Node2D" parent="TileMap"]
+
+[node name="path hitbox" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
+position = Vector2(50.3529, 118.118)
+
+[node name="path collision" parent="TileMap/path hit boxes/path hitbox" index="0"]
+position = Vector2(19.6177, 0.470581)
+shape = SubResource("RectangleShape2D_l448j")
+
+[node name="path hitbox2" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
+position = Vector2(122.353, 171.294)
+scale = Vector2(0.470588, 0.470588)
+
+[node name="path collision" parent="TileMap/path hit boxes/path hitbox2" index="0"]
+position = Vector2(-2.5, -9)
+shape = SubResource("RectangleShape2D_g8bqy")
+
+[node name="path hitbox3" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
+position = Vector2(192.471, 183.529)
+
+[node name="path collision" parent="TileMap/path hit boxes/path hitbox3" index="0"]
+position = Vector2(-7.52942, 0.588211)
+shape = SubResource("RectangleShape2D_7t5wi")
+
+[node name="path hitbox4" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
+position = Vector2(218.824, 96.4706)
+
+[node name="path collision" parent="TileMap/path hit boxes/path hitbox4" index="0"]
+position = Vector2(-1.88237, -7.29411)
+shape = SubResource("RectangleShape2D_dxbij")
+
+[node name="path hitbox5" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
+position = Vector2(347.765, 20.2353)
+
+[node name="path collision" parent="TileMap/path hit boxes/path hitbox5" index="0"]
+position = Vector2(-10.8235, 4.17647)
+shape = SubResource("RectangleShape2D_8hvt6")
+
+[node name="path hitbox6" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
+position = Vector2(426.353, 98.8235)
+
+[node name="path collision" parent="TileMap/path hit boxes/path hitbox6" index="0"]
+position = Vector2(-1.17636, 52.9412)
+shape = SubResource("RectangleShape2D_247bq")
+
+[node name="path hitbox7" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
+position = Vector2(357.647, 251.294)
+
+[node name="path collision" parent="TileMap/path hit boxes/path hitbox7" index="0"]
+position = Vector2(3.52942, -2.82352)
+shape = SubResource("RectangleShape2D_o4cjx")
+
+[node name="path hitbox8" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
+position = Vector2(328, 186.824)
+
+[node name="path collision" parent="TileMap/path hit boxes/path hitbox8" index="0"]
+position = Vector2(-0.235291, -2.35294)
+shape = SubResource("RectangleShape2D_efk54")
+
+[node name="path hitbox9" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
+position = Vector2(391.529, 151.529)
+
+[node name="path collision" parent="TileMap/path hit boxes/path hitbox9" index="0"]
+position = Vector2(51.7647, 0.705826)
+shape = SubResource("RectangleShape2D_hfpm7")
+
+[node name="Node2D" type="Node2D" parent="TileMap"]
+
+[node name="Path2D" type="Path2D" parent="TileMap/Node2D"]
+curve = SubResource("Curve2D_q2w7t")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="TileMap/Node2D/Path2D"]
+position = Vector2(-42.8235, 118.588)
+rotation = 0.002849
+
+[editable path="TileMap/path hit boxes/path hitbox"]
+[editable path="TileMap/path hit boxes/path hitbox2"]
+[editable path="TileMap/path hit boxes/path hitbox3"]
+[editable path="TileMap/path hit boxes/path hitbox4"]
+[editable path="TileMap/path hit boxes/path hitbox5"]
+[editable path="TileMap/path hit boxes/path hitbox6"]
+[editable path="TileMap/path hit boxes/path hitbox7"]
+[editable path="TileMap/path hit boxes/path hitbox8"]
+[editable path="TileMap/path hit boxes/path hitbox9"]
