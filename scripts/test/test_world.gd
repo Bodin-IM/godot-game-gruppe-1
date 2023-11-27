@@ -1,9 +1,9 @@
 extends Node2D
-var path_follow
+var path
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	path_follow = get_node("Path2D/PathFollow2D")
+	path = get_node("Path2D")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("key_f"):
@@ -11,6 +11,8 @@ func _process(_delta):
 	
 func spawn_ballon():
 	print("spawned")
-	var ballon = preload("res://scenes/enemys/red_bloon.tscn")
-	var instance = ballon.instantiate()
-	path_follow.add_child(instance)
+	var bloon = load("res://scenes/enemys/red_bloon.tscn")
+	var instance = bloon.instantiate()
+	var path_follow_new = PathFollow2D.new()
+	path.add_child(path_follow_new)
+	path_follow_new.add_child(instance)
