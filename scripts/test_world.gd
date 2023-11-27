@@ -1,8 +1,10 @@
 extends Node2D
 var hasSelectedItem = false
+var dartMonkey_scene
+
 
 func _ready():
-	pass
+	dartMonkey_scene = preload("res://scenes/dart.tscn")
 
 func _on_timer_timeout():
 	#spawn_ballon()

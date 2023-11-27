@@ -19,9 +19,9 @@ var testVar = 0
 func _ready():
 	audioPlayer = $AudioStreamPlayer2D
 	animatedSprite = $AnimatedSprite2D
-	meshNode = $rangeCol/rangeMesh
 	attackCooldown = $attackCooldown
 	rangeCol = $rangeCol
+	meshNode = $rangeCol/rangeMesh
 	meshNode.modulate = blackTransparent
 	attackCooldown.start()
 

@@ -1,9 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh2joby61o72h"]
+[gd_scene load_steps=5 format=3 uid="uid://bh2joby61o72h"]
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_dkw8j"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ronb3"]
+bg_color = Color(0.368627, 0.172549, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kyrvf"]
+line_spacing = 0.0
+font_size = 30
+font_color = Color(0.768627, 0.392157, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrwgg"]
+bg_color = Color(0.294118, 0.133333, 0, 1)
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_dkw8j")
+metadata/_edit_vertical_guides_ = []
 
 [node name="Control" type="Control" parent="."]
 layout_direction = 2
@@ -16,34 +28,67 @@ offset_top = -110.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="tower_tab" type="Panel" parent="Control"]
+z_index = 4
+layout_mode = 0
+offset_left = 964.0
+offset_top = -539.0
+offset_right = 1150.0
+offset_bottom = 109.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ronb3")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/tower_tab"]
+layout_mode = 2
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 192.0
+offset_bottom = 46.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/tower_tab/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/tower_tab/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Monkeys"
+label_settings = SubResource("LabelSettings_kyrvf")
+horizontal_alignment = 1
+
+[node name="Upgrade_tab" type="Panel" parent="Control"]
+z_index = 3
+layout_mode = 0
+offset_right = 967.0
+offset_bottom = 109.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrwgg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Upgrade_tab"]
 layout_mode = 0
 offset_right = 956.0
 offset_bottom = 109.0
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Upgrade_tab/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="label" type="MarginContainer" parent="Control/HBoxContainer/HBoxContainer"]
+[node name="label" type="MarginContainer" parent="Control/Upgrade_tab/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/HBoxContainer/label"]
+[node name="Label" type="Label" parent="Control/Upgrade_tab/HBoxContainer/HBoxContainer/label"]
 layout_mode = 2
 text = "INFO OM OPGRADES OSV."
 
-[node name="knappL" type="MarginContainer" parent="Control/HBoxContainer"]
+[node name="knappL" type="MarginContainer" parent="Control/Upgrade_tab/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/HBoxContainer/knappL"]
+[node name="Button" type="Button" parent="Control/Upgrade_tab/HBoxContainer/knappL"]
 layout_mode = 2
 text = "Upgrade 1
 "
 
-[node name="knappR" type="MarginContainer" parent="Control/HBoxContainer"]
+[node name="knappR" type="MarginContainer" parent="Control/Upgrade_tab/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/HBoxContainer/knappR"]
+[node name="Button" type="Button" parent="Control/Upgrade_tab/HBoxContainer/knappR"]
 layout_mode = 2
 text = "Upgrade 2"
