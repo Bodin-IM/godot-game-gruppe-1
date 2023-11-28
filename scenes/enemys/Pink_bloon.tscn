@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwk2myj5nxiv"]
 
-[ext_resource type="Script" path="res://scripts/Enemies/Pink_bloon.gd" id="1_8ajkp"]
-[ext_resource type="Texture2D" uid="uid://dxmbwwayqmjlj" path="res://Assets/red_bln.png" id="2_mrk52"]
+[ext_resource type="Script" path="res://scripts/Enemies/pink_bloon.gd" id="1_fthti"]
+[ext_resource type="Texture2D" uid="uid://dxmbwwayqmjlj" path="res://Assets/red_bln.png" id="2_ag1td"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_topp8"]
 radius = 53.0
@@ -12,7 +12,7 @@ radius = 53.0
 height = 144.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bobiu"]
-atlas = ExtResource("2_mrk52")
+atlas = ExtResource("2_ag1td")
 region = Rect2(0, 0, 96, 127)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vgndt"]
@@ -27,7 +27,7 @@ animations = [{
 }]
 
 [node name="Pink_Baloon" type="Area2D"]
-script = ExtResource("1_8ajkp")
+script = ExtResource("1_fthti")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -39,7 +39,7 @@ shape = SubResource("CapsuleShape2D_topp8")
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_nfp0m")
 
-[node name="poped" type="Timer" parent="."]
+[node name="popped" type="Timer" parent="."]
 wait_time = 0.001
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -47,4 +47,4 @@ sprite_frames = SubResource("SpriteFrames_vgndt")
 animation = &"Initial_color"
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="timeout" from="poped" to="." method="_on_poped_timeout"]
+[connection signal="timeout" from="popped" to="." method="_on_poped_timeout"]

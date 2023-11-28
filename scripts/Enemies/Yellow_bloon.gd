@@ -21,18 +21,18 @@ func _physics_process(delta):
 		temp_global_life -= 1
 		self.queue_free()
 	if Input.is_action_just_pressed("ui_up"): #Testing instence remove later
-		$poped.start()
+		$popped.start()
 
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("darts"):
-		$poped.start()
+		$popped.start()
 
 
 func _on_poped_timeout():
-	var ballon = preload("res://scenes/enemys/Green_bloon.tscn")
+	var ballon = preload("res://scenes/enemys/green_bloon.tscn")
 	var instance = ballon.instantiate()
 	instance.position = position
 	get_parent().add_child(instance)
 	self.queue_free()
-	$poped.stop()
+	$popped.stop()

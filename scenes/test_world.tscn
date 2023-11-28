@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjh0qdgothtnu"]
+[gd_scene load_steps=3 format=3 uid="uid://bjh0qdgothtnu"]
 
 [ext_resource type="Script" path="res://scripts/test/test_world.gd" id="1_3ed3f"]
-[ext_resource type="PackedScene" uid="uid://cff0abcvoserp" path="res://scenes/enemys/Red_bloon.tscn" id="2_3rtru"]
 
 [sub_resource type="Curve2D" id="Curve2D_nae8w"]
 _data = {
@@ -17,8 +16,5 @@ position = Vector2(274.419, 285)
 scale = Vector2(1.00175, 1)
 curve = SubResource("Curve2D_nae8w")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-240, -212)
-rotation = 0.0191949
-
-[node name="Red_Baloon" parent="Path2D/PathFollow2D" instance=ExtResource("2_3rtru")]
+[node name="Spawn_CD" type="Timer" parent="."]
+wait_time = 0.1
