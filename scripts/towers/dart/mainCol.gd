@@ -1,23 +1,31 @@
 extends Area2D
 
-var meshNode
 var blackTransparent = Color(0.0, 0.0, 0.0,0.2) #(red,green,blue,transparency)
 var redTransparent = Color(1.0,0,0,0.1) #(red,green,blue,transparency)
 var amountOfObjects = 0
 var placeable = true
 var placed = false
-var audioPlayer
 var testInt = 10
 var degs
-var attackCooldown
 var cooldownOff = false
 
+var audioPlayer
+var animatedSprite
+var meshNode
+var attackCooldown
+var rangeCol
+var testVar = 0
+
 func _ready():
-	audioPlayer = get_parent().get_node("AudioStreamPlayer2D")
-	meshNode = get_parent().get_node("rangeCol").get_node("rangeMesh")
+	audioPlayer = $AudioStreamPlayer2D
+	animatedSprite = $AnimatedSprite2D
+	attackCooldown = $attackCooldown
+	rangeCol = $rangeCol
+	meshNode = $rangeCol/rangeMesh
 	meshNode.modulate = blackTransparent
-	attackCooldown = get_parent().get_node("attackCooldown")
 	attackCooldown.start()
+	#rangeCol.scale = Vector2(2,2)
+	#meshNode.scale = Vector2(20,20)
 
 func _process(_delta):
 	if placed:
@@ -32,15 +40,24 @@ func _process(_delta):
 				attackCooldown.start()
 				start_attack()
 	
-	if !placed: get_parent().global_position = get_global_mouse_position()
+	if !placed: self.global_position = get_global_mouse_position()
 	if Input.is_action_just_pressed("normalClick"):
 		if placeable:
 			audioPlayer.stream = preload("res://assets/tower_place.wav")
 			audioPlayer.play()
 			placed = true
 
+func setToNull():
+	meshNode.scale = Vector2(1,1)
+	rangeCol.get_node("range").scale = Vector2(1,1)
+
+func testUpgrade():
+	setToNull()
+	meshNode.scale = Vector2(30,30)
+	rangeCol.get_node("range").scale = Vector2(30,30)
+
 func getEnemysInRange():
-	var objects = get_parent().get_node("rangeCol").get_overlapping_areas()
+	var objects = rangeCol.get_overlapping_areas()
 	var arr = []
 	for key in objects:
 		if key.is_in_group("Enemys"):
@@ -78,14 +95,12 @@ func get_nearest_body(bodies):
 	return nearest_body
 
 func rotate_towards(target_position):
-	var animated_sprite = get_parent().get_node("AnimatedSprite2D")  # Adjust the node name as needed
-
-	if animated_sprite:
-		var direction = (target_position - animated_sprite.global_position).normalized()
+	if animatedSprite:
+		var direction = (target_position - animatedSprite.global_position).normalized()
 		var angle_rad = atan2(direction.y, direction.x)
 		var angle_deg = rad_to_deg(angle_rad)
-		animated_sprite.rotation_degrees = angle_deg+90
-		var degs = animated_sprite.rotation_degrees
+		animatedSprite.rotation_degrees = angle_deg+90
+		degs = animatedSprite.rotation_degrees
 	else:
 		print("AnimatedSprite2D not found.")
 
@@ -100,24 +115,23 @@ func _on_range_col_area_entered(body):
 		if body.is_in_group("Enemys"):
 			pass
 
-func _on_attack_cooldown_timeout():
-	start_attack()
 	
 func start_attack():
 	if placed:
-		var doAttack = false
-		var nearest_body
 		var nearestbodyset = false
 		var arr = getEnemysInRange()
 		if arr.size() > 0:
-			nearest_body = get_nearest_body(arr)
 			nearestbodyset = true
 		if nearestbodyset:
-			attack(nearest_body)
+			attack()
 		else:attackCooldown.stop();cooldownOff=true
 
-func attack(body):
+func attack():
 	var dart = preload("res://scenes/dart_projectile.tscn")
 	var instance = dart.instantiate()
-	get_parent().add_child(instance)
-	print(get_parent().get_children())
+	self.add_child(instance)
+	print(get_children())
+
+
+func _on_attack_cooldown_timeout():
+	start_attack()

@@ -1,7 +1,10 @@
 extends Node2D
+var hasSelectedItem = false
+var dartMonkey_scene
+
 
 func _ready():
-	pass
+	dartMonkey_scene = preload("res://scenes/dart.tscn")
 
 func _on_timer_timeout():
 	#spawn_ballon()
@@ -10,6 +13,8 @@ func _on_timer_timeout():
 func _process(_delta):
 	if Input.is_action_just_pressed("pressS"):
 		spawn_ballon()
+	if Input.is_action_just_pressed("e"):
+		get_node("dart_monkey").testVar = 1
 	
 func spawn_ballon():
 	print("spawned")

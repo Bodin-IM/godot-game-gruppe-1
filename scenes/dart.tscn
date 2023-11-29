@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://b64ahqcgprwjx"]
+[gd_scene load_steps=10 format=3 uid="uid://b64ahqcgprwjx"]
 
-[ext_resource type="Script" path="res://scripts/towers/dart/RangeCol.gd" id="2_jburb"]
 [ext_resource type="Texture2D" uid="uid://cpofpbi4l2l7l" path="res://Assets/darts.png" id="3_g0tmt"]
 [ext_resource type="Script" path="res://scripts/towers/dart/mainCol.gd" id="4_ldh6a"]
 
@@ -27,39 +26,42 @@ animations = [{
 radius = 10.0
 height = 20.0
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_p4t5s"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_68dnf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ahtem"]
 
 [node name="dart_monkey" type="Area2D"]
-z_index = 2
+z_index = 3
 position = Vector2(436, 234)
 scale = Vector2(0.8, 0.8)
+script = ExtResource("4_ldh6a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 2
+z_index = 3
 sprite_frames = SubResource("SpriteFrames_y8oli")
 animation = &"idle"
 
 [node name="rangeCol" type="Area2D" parent="."]
-script = ExtResource("2_jburb")
+z_index = 1
 
 [node name="range" type="CollisionShape2D" parent="rangeCol"]
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_am05h")
 
 [node name="rangeMesh" type="MeshInstance2D" parent="rangeCol"]
+modulate = Color(0, 0, 0, 0)
 z_index = 1
 material = SubResource("ShaderMaterial_o5u4x")
 position = Vector2(-3.05176e-05, 0)
 scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_31bq7")
-texture = SubResource("CanvasTexture_p4t5s")
+texture = SubResource("ViewportTexture_68dnf")
 
 [node name="main" type="Area2D" parent="." groups=["mainCol"]]
-script = ExtResource("4_ldh6a")
+z_index = 1
 
 [node name="mainCol" type="CollisionShape2D" parent="main"]
+z_index = 1
 scale = Vector2(6, 6)
 shape = SubResource("CircleShape2D_ahtem")
 
@@ -69,7 +71,7 @@ wait_time = 1.115
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 z_index = 2
 
-[connection signal="area_entered" from="rangeCol" to="main" method="_on_range_col_area_entered"]
-[connection signal="area_entered" from="main" to="main" method="_on_area_entered"]
-[connection signal="area_exited" from="main" to="main" method="_on_area_exited"]
-[connection signal="timeout" from="attackCooldown" to="main" method="_on_attack_cooldown_timeout"]
+[connection signal="area_entered" from="rangeCol" to="." method="_on_range_col_area_entered"]
+[connection signal="area_entered" from="main" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="main" to="." method="_on_area_exited"]
+[connection signal="timeout" from="attackCooldown" to="." method="_on_attack_cooldown_timeout"]

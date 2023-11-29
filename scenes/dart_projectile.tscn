@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpv6v0oehklh0"]
 
 [ext_resource type="Script" path="res://scripts/dartProjectile.gd" id="1_5mndl"]
-[ext_resource type="Texture2D" uid="uid://byh6i6o5lnrwu" path="res://assets/dartProj.png" id="2_dmyt8"]
+[ext_resource type="Texture2D" uid="uid://byh6i6o5lnrwu" path="res://Assets/dartProj.png" id="2_dmyt8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkwdp"]
 atlas = ExtResource("2_dmyt8")
@@ -23,12 +23,12 @@ radius = 9.0
 height = 38.0
 
 [node name="dartProjectile" type="Area2D"]
-z_index = 3
+z_index = 2
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_5mndl")
 
 [node name="mainProj" type="AnimatedSprite2D" parent="."]
-z_index = 3
+z_index = 1
 scale = Vector2(0.255, 0.255)
 sprite_frames = SubResource("SpriteFrames_bidbt")
 frame_progress = 0.992591
