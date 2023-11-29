@@ -26,7 +26,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Blue_Baloon" type="Area2D"]
+[node name="blue_Baloon" type="Area2D"]
 script = ExtResource("1_donda")
 
 [node name="Hitbox" type="Area2D" parent="."]

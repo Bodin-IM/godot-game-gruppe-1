@@ -26,7 +26,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Armoured_Baloon" type="Area2D"]
+[node name="armoured_Baloon" type="Area2D"]
 script = ExtResource("1_vr72t")
 
 [node name="Hitbox" type="Area2D" parent="."]

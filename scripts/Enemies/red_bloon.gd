@@ -6,6 +6,8 @@ var damage = 1
 var speed = 2
 var path_follow
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
 	path_follow = get_parent()
@@ -13,6 +15,9 @@ func _ready():
 	anim.play("Initial_color")
 	path_follow.set_rotates(false)
 	path_follow.set_loop(false)
+
+func set_image(image):
+	$AnimatedSprite2D.sprite_frames = image
 
 func _physics_process(delta):
 	path_follow.set_progress(path_follow.get_progress() + speed + delta)

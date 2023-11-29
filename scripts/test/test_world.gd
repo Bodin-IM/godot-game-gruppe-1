@@ -2,8 +2,13 @@ extends Node2D
 var path
 var rand_bloon
 
+var image = preload("res://Assets/red_sprite_frames.tres")
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	path = get_node("Path2D")
 	pickrando()
 
@@ -19,6 +24,7 @@ func spawn_ballon():
 	for i in range(3):
 		print("spawned")
 		var instance = rand_bloon.instantiate()
+		instance.set_image(image)
 		var path_follow_new = PathFollow2D.new()
 		path.add_child(path_follow_new)
 		path_follow_new.add_child(instance)
