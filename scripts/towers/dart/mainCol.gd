@@ -24,9 +24,10 @@ func _ready():
 	meshNode = $rangeCol/rangeMesh
 	meshNode.modulate = blackTransparent
 	attackCooldown.start()
+	#rangeCol.scale = Vector2(2,2)
+	#meshNode.scale = Vector2(20,20)
 
 func _process(_delta):
-	#print(testVar)
 	if placed:
 		var nearest_body
 		var arr = getEnemysInRange()
@@ -45,6 +46,15 @@ func _process(_delta):
 			audioPlayer.stream = preload("res://assets/tower_place.wav")
 			audioPlayer.play()
 			placed = true
+
+func setToNull():
+	meshNode.scale = Vector2(1,1)
+	rangeCol.get_node("range").scale = Vector2(1,1)
+
+func testUpgrade():
+	setToNull()
+	meshNode.scale = Vector2(30,30)
+	rangeCol.get_node("range").scale = Vector2(30,30)
 
 func getEnemysInRange():
 	var objects = rangeCol.get_overlapping_areas()
