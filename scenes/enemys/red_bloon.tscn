@@ -29,7 +29,7 @@ animations = [{
 [node name="Red_Baloon" type="Area2D"]
 script = ExtResource("1_qrwuy")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemys"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -4)

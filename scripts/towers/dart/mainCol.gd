@@ -66,7 +66,7 @@ func getEnemysInRange():
 
 func _on_area_entered(body):
 	if !placed:
-		if body.is_in_group("mainCol"):
+		if body.is_in_group("mainCol") || body.is_in_group("path_hitbox"):
 			amountOfObjects = amountOfObjects+1
 			meshNode.modulate = redTransparent
 			placeable = false
@@ -74,7 +74,7 @@ func _on_area_entered(body):
 
 func _on_area_exited(body):
 	if !placed:
-		if body.is_in_group("mainCol"):
+		if body.is_in_group("mainCol") || body.is_in_group("path_hitbox"):
 			amountOfObjects = amountOfObjects-1
 			if(amountOfObjects < 1):
 				meshNode.modulate = blackTransparent
@@ -87,11 +87,12 @@ func get_nearest_body(bodies):
 	var nearest_body = null
 
 	for body in bodies:
-		var distance = position.distance_to(body.position)
-		if distance > nearest_distance:
-			nearest_distance = distance
-			nearest_body = body
-
+		if body.is_in_group("Enemys"): 
+			var distance = position.distance_to(body.position)
+			if distance > nearest_distance:
+				nearest_distance = distance
+				nearest_body = body
+	print(nearest_body)
 	return nearest_body
 
 func rotate_towards(target_position):

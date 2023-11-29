@@ -1,6 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://cxim2ulmtmbh8"]
+[gd_scene load_steps=40 format=3 uid="uid://cxim2ulmtmbh8"]
 
 [ext_resource type="Texture2D" uid="uid://blycju4s2yvvb" path="res://tilemap assets/Trees_Bushes.png" id="1_1opco"]
+[ext_resource type="Script" path="res://scenes/maps/map_1.gd" id="1_e7wnk"]
+[ext_resource type="PackedScene" uid="uid://bh2joby61o72h" path="res://scenes/ui.tscn" id="2_1wutf"]
 [ext_resource type="Texture2D" uid="uid://r3gsaq0l1pnt" path="res://tilemap assets/Tileset_Road.png" id="2_jn6qp"]
 [ext_resource type="Texture2D" uid="uid://ccryp2aoof63f" path="res://tilemap assets/Islands v0.2/Nature.png" id="3_7rnpk"]
 [ext_resource type="Texture2D" uid="uid://bf6xyc8r3up2r" path="res://tilemap assets/Tileset_Ground.png" id="3_gmsso"]
@@ -13,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bpyfovep1l2w1" path="res://tilemap assets/Banner_1.png" id="9_vvdax"]
 [ext_resource type="Texture2D" uid="uid://dxjxfof0k5ih6" path="res://tilemap assets/Islands v0.2/terrain.png" id="10_ec2en"]
 [ext_resource type="PackedScene" uid="uid://bequax7o27icx" path="res://scenes/path_hitbox.tscn" id="13_ufuen"]
+[ext_resource type="PackedScene" uid="uid://b64ahqcgprwjx" path="res://scenes/dart.tscn" id="16_3b3nd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qd751"]
 texture = ExtResource("1_1opco")
@@ -5354,31 +5357,31 @@ sources/10 = SubResource("TileSetAtlasSource_xe7u6")
 sources/11 = SubResource("TileSetAtlasSource_2o2tu")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l448j"]
-size = Vector2(137.706, 29.2941)
+size = Vector2(137.412, 29.2941)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8bqy"]
-size = Vector2(69, 138)
+size = Vector2(69, 141)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7t5wi"]
-size = Vector2(93.1764, 31.2941)
+size = Vector2(94.5882, 31.2941)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxbij"]
-size = Vector2(30.1177, 158.588)
+size = Vector2(30.1177, 158.118)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvt6"]
-size = Vector2(208, 28.3529)
+size = Vector2(208.471, 28.3529)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_247bq"]
-size = Vector2(30.5882, 224.471)
+size = Vector2(30.5882, 224.941)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4cjx"]
-size = Vector2(96.4706, 30.1177)
+size = Vector2(97.4118, 30.1177)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efk54"]
-size = Vector2(30.5883, 94.1177)
+size = Vector2(30.5883, 96.9412)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfpm7"]
-size = Vector2(198.588, 31.5294)
+size = Vector2(199.529, 31.5294)
 
 [sub_resource type="Curve2D" id="Curve2D_q2w7t"]
 _data = {
@@ -5387,9 +5390,12 @@ _data = {
 point_count = 10
 
 [node name="map1" type="Node2D"]
+script = ExtResource("1_e7wnk")
+
+[node name="UI" parent="." instance=ExtResource("2_1wutf")]
 
 [node name="TileMap" type="TileMap" parent="."]
-scale = Vector2(2.125, 2.125)
+scale = Vector2(1.77, 1.77)
 tile_set = SubResource("TileSet_ol5wu")
 format = 2
 layer_0/name = "grass"
@@ -5415,7 +5421,7 @@ layer_2/tile_data = PackedInt32Array(917508, 655370, 3, 720900, 655370, 3, 91750
 position = Vector2(50.3529, 118.118)
 
 [node name="path collision" parent="TileMap/path hit boxes/path hitbox" index="0"]
-position = Vector2(19.6177, 0.470581)
+position = Vector2(18.353, 0.470581)
 shape = SubResource("RectangleShape2D_l448j")
 
 [node name="path hitbox2" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
@@ -5423,56 +5429,56 @@ position = Vector2(122.353, 171.294)
 scale = Vector2(0.470588, 0.470588)
 
 [node name="path collision" parent="TileMap/path hit boxes/path hitbox2" index="0"]
-position = Vector2(-2.5, -9)
+position = Vector2(-2.5, -10.4998)
 shape = SubResource("RectangleShape2D_g8bqy")
 
 [node name="path hitbox3" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
 position = Vector2(192.471, 183.529)
 
 [node name="path collision" parent="TileMap/path hit boxes/path hitbox3" index="0"]
-position = Vector2(-7.52942, 0.588211)
+position = Vector2(-7.76511, 0.588211)
 shape = SubResource("RectangleShape2D_7t5wi")
 
 [node name="path hitbox4" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
 position = Vector2(218.824, 96.4706)
 
 [node name="path collision" parent="TileMap/path hit boxes/path hitbox4" index="0"]
-position = Vector2(-1.88237, -7.29411)
+position = Vector2(-1.88237, -7.05888)
 shape = SubResource("RectangleShape2D_dxbij")
 
 [node name="path hitbox5" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
 position = Vector2(347.765, 20.2353)
 
 [node name="path collision" parent="TileMap/path hit boxes/path hitbox5" index="0"]
-position = Vector2(-10.8235, 4.17647)
+position = Vector2(-11.5297, 4.17647)
 shape = SubResource("RectangleShape2D_8hvt6")
 
 [node name="path hitbox6" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
 position = Vector2(426.353, 98.8235)
 
 [node name="path collision" parent="TileMap/path hit boxes/path hitbox6" index="0"]
-position = Vector2(-1.17636, 52.9412)
+position = Vector2(-1.17636, 52.2353)
 shape = SubResource("RectangleShape2D_247bq")
 
 [node name="path hitbox7" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
 position = Vector2(357.647, 251.294)
 
 [node name="path collision" parent="TileMap/path hit boxes/path hitbox7" index="0"]
-position = Vector2(3.52942, -2.82352)
+position = Vector2(3.52948, -2.82353)
 shape = SubResource("RectangleShape2D_o4cjx")
 
 [node name="path hitbox8" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
 position = Vector2(328, 186.824)
 
 [node name="path collision" parent="TileMap/path hit boxes/path hitbox8" index="0"]
-position = Vector2(-0.235291, -2.35294)
+position = Vector2(-0.235291, -1.88283)
 shape = SubResource("RectangleShape2D_efk54")
 
 [node name="path hitbox9" parent="TileMap/path hit boxes" instance=ExtResource("13_ufuen")]
 position = Vector2(391.529, 151.529)
 
 [node name="path collision" parent="TileMap/path hit boxes/path hitbox9" index="0"]
-position = Vector2(51.7647, 0.705826)
+position = Vector2(51.2943, 0.705826)
 shape = SubResource("RectangleShape2D_hfpm7")
 
 [node name="Node2D" type="Node2D" parent="TileMap"]
@@ -5480,7 +5486,15 @@ shape = SubResource("RectangleShape2D_hfpm7")
 [node name="Path2D" type="Path2D" parent="TileMap/Node2D"]
 curve = SubResource("Curve2D_q2w7t")
 
+[node name="Spawn_CD" type="Timer" parent="TileMap/Node2D"]
+
+[node name="dart_monkey" parent="TileMap" instance=ExtResource("16_3b3nd")]
+position = Vector2(205.176, 110.118)
+scale = Vector2(0.376471, 0.376471)
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="timeout" from="TileMap/Node2D/Spawn_CD" to="." method="_on_spawn_cd_timeout"]
 
 [editable path="TileMap/path hit boxes/path hitbox"]
 [editable path="TileMap/path hit boxes/path hitbox2"]
