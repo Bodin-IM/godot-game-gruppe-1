@@ -5,6 +5,7 @@ var anim
 var damage = 1
 var speed = 2
 var path_follow
+var progress = 0
 
 
 
@@ -23,6 +24,7 @@ func set_values(frames, set_speed, set_damage):
 
 func _physics_process(delta):
 	path_follow.set_progress(path_follow.get_progress() + speed + delta)
+	progress = progress + speed
 	
 	if path_follow.progress_ratio == 1.0:
 		temp_global_life -= 1
@@ -32,6 +34,5 @@ func _physics_process(delta):
 
 
 func _on_poped_timeout():
+func balloonHit():
 	self.queue_free()
-	get_parent().queue_free()
-	$popped.stop()
