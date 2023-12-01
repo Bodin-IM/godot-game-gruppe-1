@@ -92,7 +92,7 @@ func get_nearest_body(bodies):
 			if distance > nearest_distance:
 				nearest_distance = distance
 				nearest_body = body
-	print(nearest_body)
+	#print(nearest_body)
 	return nearest_body
 
 func rotate_towards(target_position):
@@ -131,7 +131,7 @@ func attack():
 	var dart = preload("res://scenes/dart_projectile.tscn")
 	var instance = dart.instantiate()
 	self.add_child(instance)
-	print(get_children())
+	#print(get_children())
 
 
 func _on_attack_cooldown_timeout():

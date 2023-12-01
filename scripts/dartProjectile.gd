@@ -15,7 +15,7 @@ func _ready():
 	self.get_node("mainProj").rotation_degrees = parRotation
 
 func _process(delta):
-	print(parRotation)
+	#print(parRotation)
 	var movement_vector = Vector2(1, 0).rotated(deg_to_rad(parRotation))
 	position += movement_vector * speed * delta
 	if cols > 0:

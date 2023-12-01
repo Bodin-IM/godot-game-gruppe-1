@@ -16,8 +16,10 @@ func _ready():
 	path_follow.set_rotates(false)
 	path_follow.set_loop(false)
 
-func set_image(image):
-	$AnimatedSprite2D.sprite_frames = image
+func set_values(frames, set_speed, set_damage):
+	$AnimatedSprite2D.sprite_frames = frames
+	speed = set_speed
+	damage = set_damage
 
 func _physics_process(delta):
 	path_follow.set_progress(path_follow.get_progress() + speed + delta)
@@ -26,11 +28,6 @@ func _physics_process(delta):
 		temp_global_life -= 1
 		self.queue_free()
 	if Input.is_action_just_pressed("ui_up"): #Testing instence remove later
-		$popped.start()
-
-
-func _on_hitbox_body_entered(body):
-	if body.is_in_group("darts"):
 		$popped.start()
 
 
