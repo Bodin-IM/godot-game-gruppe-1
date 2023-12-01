@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://duaxdv8ow2xyj"]
-
-[node name="bush_hitbox" type="Area2D" groups=["path_hitbox"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
