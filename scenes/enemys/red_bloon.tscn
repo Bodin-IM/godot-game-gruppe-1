@@ -26,10 +26,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Red_Baloon" type="Area2D"]
+[node name="Red_Baloon" type="Area2D" groups=["Enemys"]]
 script = ExtResource("1_qrwuy")
 
-[node name="Hitbox" type="Area2D" parent="." groups=["Enemys"]]
+[node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -4)

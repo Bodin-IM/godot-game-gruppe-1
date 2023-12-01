@@ -15,6 +15,7 @@ var meshNode
 var attackCooldown
 var rangeCol
 var testVar = 0
+var clicked = false
 
 func _ready():
 	audioPlayer = $AudioStreamPlayer2D
@@ -28,13 +29,16 @@ func _ready():
 	#meshNode.scale = Vector2(20,20)
 
 func _process(_delta):
+	
 	if placed:
+		if clicked:meshNode.modulate = blackTransparent
+		else:meshNode.modulate.a = 0
 		var nearest_body
 		var arr = getEnemysInRange()
 		if arr.size() > 0:
-			nearest_body = get_nearest_body(arr)
+			nearest_body = getFurthestBody(arr)
 		if nearest_body:
-			rotate_towards(nearest_body.position)
+			rotate_towards(nearest_body.global_position)
 			if cooldownOff:
 				cooldownOff = false
 				attackCooldown.start()
@@ -92,8 +96,17 @@ func get_nearest_body(bodies):
 			if distance > nearest_distance:
 				nearest_distance = distance
 				nearest_body = body
-	print(nearest_body)
 	return nearest_body
+
+func getFurthestBody(bodies):
+	var furthestBody
+	var highestProg = 0
+	for body in bodies:
+		if body.is_in_group("Enemys"):
+			var bodyProg = body.progress
+			if bodyProg > highestProg:
+				furthestBody = body
+	return furthestBody
 
 func rotate_towards(target_position):
 	if animatedSprite:
@@ -131,8 +144,30 @@ func attack():
 	var dart = preload("res://scenes/dart_projectile.tscn")
 	var instance = dart.instantiate()
 	self.add_child(instance)
-	print(get_children())
+	#print(get_children())
 
 
 func _on_attack_cooldown_timeout():
 	start_attack()
+	
+func hideAllRangeShapes():
+	var allNodes = get_parent().get_children()
+	var arr = []
+	#var count = get_parent().get_child_count()
+	for child in allNodes:
+		if child.is_in_group("towers"):
+			arr.push_front(child)
+	print(arr)
+	if arr.size() > 0:
+		for node in arr:
+			node.clicked = false
+			node.get_node("rangeCol").get_node("rangeMesh").modulate.a = 0
+
+func _on_main_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			hideAllRangeShapes()
+			clicked = true
+			
+			#meshNode.modulate = blackTransparent
+			print("clicked monkey")

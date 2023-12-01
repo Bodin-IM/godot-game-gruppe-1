@@ -5,6 +5,7 @@ var anim
 var damage = 1
 var speed = 2
 var path_follow
+var progress = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
@@ -16,6 +17,7 @@ func _ready():
 
 func _physics_process(delta):
 	path_follow.set_progress(path_follow.get_progress() + speed + delta)
+	progress = progress + speed
 	
 	if path_follow.progress_ratio == 1.0:
 		temp_global_life -= 1
@@ -24,12 +26,5 @@ func _physics_process(delta):
 		$popped.start()
 
 
-func _on_hitbox_body_entered(body):
-	if body.is_in_group("darts"):
-		$popped.start()
-
-
-func _on_poped_timeout():
+func balloonHit():
 	self.queue_free()
-	get_parent().queue_free()
-	$popped.stop()

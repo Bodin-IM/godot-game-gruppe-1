@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dflbnm02l2ift" path="res://tilemap assets/Barrel_2.png" id="8_ypchp"]
 [ext_resource type="Texture2D" uid="uid://bpyfovep1l2w1" path="res://tilemap assets/Banner_1.png" id="9_vvdax"]
 [ext_resource type="Texture2D" uid="uid://dxjxfof0k5ih6" path="res://tilemap assets/Islands v0.2/terrain.png" id="10_ec2en"]
-[ext_resource type="PackedScene" uid="uid://bequax7o27icx" path="res://scenes/path_hitbox.tscn" id="13_ufuen"]
+[ext_resource type="PackedScene" path="res://scenes/path_hitbox.tscn" id="13_ufuen"]
 [ext_resource type="PackedScene" uid="uid://b64ahqcgprwjx" path="res://scenes/dart.tscn" id="16_3b3nd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qd751"]
@@ -5493,8 +5493,6 @@ position = Vector2(205.176, 110.118)
 scale = Vector2(0.376471, 0.376471)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[connection signal="timeout" from="TileMap/Node2D/Spawn_CD" to="." method="_on_spawn_cd_timeout"]
 
 [editable path="TileMap/path hit boxes/path hitbox"]
 [editable path="TileMap/path hit boxes/path hitbox2"]

@@ -1,13 +1,18 @@
 extends Node2D
 var path
 var rand_bloon
+var dart
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	path = get_node("TileMap/Node2D/Path2D")
 	pickrando()
+	dart = preload("res://scenes/dart.tscn")
 
 func _process(_delta):
+	if Input.is_action_just_pressed("e"):
+		var instance = dart.instantiate()
+		get_node("TileMap").add_child(instance)
 	if Input.is_action_just_pressed("fKeyPressed"):
 		spawn_ballon()
 	if Input.is_action_pressed("ui_down"):
@@ -28,7 +33,7 @@ func spawn_ballon():
 		await($TileMap/Node2D/Spawn_CD.timeout)
 		
 func pickrando():
-	var i = randi_range(1, 6)
+	var i = randi_range(1, 1)
 	if i == 1:
 		rand_bloon = load("res://scenes/enemys/red_bloon.tscn")
 		print("Red")
