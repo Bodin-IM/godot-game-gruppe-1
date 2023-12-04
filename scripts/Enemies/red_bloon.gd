@@ -13,7 +13,6 @@ var progress = 0
 func _ready():
 	path_follow = get_parent()
 	anim = $AnimatedSprite2D
-	anim.play("Initial_color")
 	path_follow.set_rotates(false)
 	path_follow.set_loop(false)
 
