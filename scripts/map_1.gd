@@ -19,12 +19,14 @@ func _ready():
 		"red":{
 			"speed":2,
 			"dmg":1,
-			"frames":preload("res://Assets/bloon_sprite_frames/red_sprite_frames.tres")
+			"frames":preload("res://Assets/bloon_sprite_frames/red_sprite_frames.tres"),
+			"group":"red_bloon"
 		},
 		"blue":{
 			"speed":3,
 			"dmg":2,
-			"frames":preload("res://Assets/bloon_sprite_frames/blue_sprite_frames.tres")
+			"frames":preload("res://Assets/bloon_sprite_frames/blue_sprite_frames.tres"),
+			"group":"blue_bloon"
 		},
 	}
 	
@@ -68,8 +70,10 @@ func wave_summon():
 	var wave = rounds[current_round][current_wave]
 	var speed = wave.type.speed
 	var dmg = wave.type.dmg
+	var group = wave.type.group
+	
 	for i in range(wave.amount):
-		spawn_ballon(wave.type.frames, speed, dmg)
+		spawn_ballon(wave.type.frames, speed, dmg, group)
 		$TileMap/Node2D/Spawn_CD.start()
 		await($TileMap/Node2D/Spawn_CD.timeout)
 	if rounds[current_round].size() > current_wave + 1:
@@ -79,10 +83,11 @@ func wave_summon():
 		roundReady = true
 	
 
-func spawn_ballon(frames, speed, damage):
+func spawn_ballon(frames, speed, damage, group):
 		print("spawned")
 		var instance = bloon_scene.instantiate()
 		instance.set_values(frames, speed, damage)
+		instance.add_to_group(group)
 		instance.scale = Vector2(0.2,0.2)
 		var path_follow_new = PathFollow2D.new()
 		path.add_child(path_follow_new)
