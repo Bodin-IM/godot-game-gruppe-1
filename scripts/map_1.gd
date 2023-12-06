@@ -94,8 +94,7 @@ func wave_summon():
 func spawn_ballon(frames, speed, damage, group):
 		print("spawned")
 		var instance = bloon_scene.instantiate()
-		instance.set_values(frames, speed, damage)
-		instance.add_to_group(group)
+		instance.set_values(frames, speed, damage, group)
 		instance.scale = Vector2(0.2,0.2)
 		var path_follow_new = PathFollow2D.new()
 		path.add_child(path_follow_new)

@@ -16,10 +16,11 @@ func _ready():
 	path_follow.set_rotates(false)
 	path_follow.set_loop(false)
 
-func set_values(frames, set_speed, set_damage):
+func set_values(frames, set_speed, set_damage, group):
 	$AnimatedSprite2D.sprite_frames = frames
 	speed = set_speed
 	damage = set_damage
+	self.add_to_group(group)
 
 func _physics_process(delta):
 	path_follow.set_progress(path_follow.get_progress() + speed + delta)
@@ -28,8 +29,6 @@ func _physics_process(delta):
 	if path_follow.progress_ratio == 1.0:
 		temp_global_life -= 1
 		self.queue_free()
-	if Input.is_action_just_pressed("ui_up"): #Testing instence remove later
-		$popped.start()
 
 func balloonHit():
 	self.queue_free()
