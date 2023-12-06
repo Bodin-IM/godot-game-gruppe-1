@@ -1,24 +1,18 @@
 extends Node2D
-var path
-var rand_bloon
 
+var path
 var current_wave = -1
 var waves
 var rounds
 var current_round = -1
-var red_values
+var red_valuesl
 var blue_values
 var roundReady = true
 var red_sprite_frames = preload("res://Assets/bloon_sprite_frames/red_sprite_frames.tres")
 var blue_sprite_frames = preload("res://Assets/bloon_sprite_frames/blue_sprite_frames.tres")
 var bloon_scene = preload("res://scenes/enemys/Red_bloon.tscn")
-var myObj
 var balloons
 
-
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	path = get_node("TileMap/Node2D/Path2D")
 	balloons = {
@@ -55,30 +49,25 @@ func _ready():
 	{"type":balloons.red, "amount":6}, 
 	{"type":balloons.blue, "amount":3}, 
 	{"type":balloons.red, "amount":2}, 
-	]
+	],
 	]
 	
 
 func _process(_delta):
 	if Input.is_action_just_pressed("fKeyPressed"):
-		if roundReady:
-			roundReady = false
-			current_round += 1
-			round_summon()
+		round_summon()
 	
 func round_summon():
-	for wave in rounds[current_round]:
+	if roundReady:
+		roundReady = false
+		current_wave = -1
+		current_round += 1
 		wave_summon()
-		$TileMap/Node2D/Spawn_CD.start()
-		await($TileMap/Node2D/Spawn_CD.timeout)
-	current_wave = -1
-	roundReady = true
 		
 func wave_summon():
 	var wave = rounds[current_round][current_wave]
 	var speed = wave.type.speed
 	var dmg = wave.type.dmg
-	
 	for i in range(wave.amount):
 		spawn_ballon(wave.type.frames, speed, dmg)
 		$TileMap/Node2D/Spawn_CD.start()
@@ -86,6 +75,8 @@ func wave_summon():
 	if rounds[current_round].size() > current_wave + 1:
 		current_wave += 1
 		wave_summon()
+	else:
+		roundReady = true
 	
 
 func spawn_ballon(frames, speed, damage):
