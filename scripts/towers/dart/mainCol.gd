@@ -16,8 +16,17 @@ var attackCooldown
 var rangeCol
 var testVar = 0
 var clicked = false
+var projSpeed = 1000
+var uiScript
+var mouseInNode
+
+var upgrades = {
+	"left":[15,30], #range
+	"right":[20,40] #projectile speed
+}
 
 func _ready():
+	uiScript = get_parent().get_parent().get_node("UI")
 	audioPlayer = $AudioStreamPlayer2D
 	animatedSprite = $AnimatedSprite2D
 	attackCooldown = $attackCooldown
@@ -50,14 +59,27 @@ func _process(_delta):
 			audioPlayer.stream = preload("res://assets/tower_place.wav")
 			audioPlayer.play()
 			placed = true
+			placeable = false
 
-func setToNull():
+func setRangeToNull():
 	meshNode.scale = Vector2(1,1)
 	rangeCol.get_node("range").scale = Vector2(1,1)
 
-func testUpgrade():
-	setToNull()
-	meshNode.scale = Vector2(30,30)
+func testUpgrade(upgradeValue):
+	if upgradeValue == "l1":
+		setRangeToNull()
+		var scaleVal = 1+(upgrades.left[0]/100)
+		scale = Vector2(scaleVal, scaleVal)
+		meshNode.scale = Vector2(scaleVal, scaleVal)
+	elif upgradeValue == "l2":
+		setRangeToNull()
+		var scaleVal = 1+(upgrades.left[1]/100)
+		scale = Vector2(scaleVal, scaleVal)
+		meshNode.scale = Vector2(scaleVal, scaleVal)
+	elif upgradeValue == "r1":
+		projSpeed = 1000+(upgrades.right[0]*10)
+	elif upgradeValue == "r2":
+		projSpeed = 1000+(upgrades.right[1]*10)
 	rangeCol.get_node("range").scale = Vector2(30,30)
 
 func getEnemysInRange():
@@ -143,6 +165,7 @@ func start_attack():
 func attack():
 	var dart = preload("res://scenes/dart_projectile.tscn")
 	var instance = dart.instantiate()
+	instance.speed = projSpeed
 	self.add_child(instance)
 	#print(get_children())
 
