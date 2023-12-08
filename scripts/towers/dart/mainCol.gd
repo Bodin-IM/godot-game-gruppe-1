@@ -19,13 +19,21 @@ var clicked = false
 var projSpeed = 1000
 var uiScript
 var mouseInNode
+var mainMap
 
 var upgrades = {
 	"left":[15,30], #range
-	"right":[20,40] #projectile speed
+	"right":[20,40], #projectile speed
+	"names":{
+		"l1":"Range Increase",
+		"l2":"More Range",
+		"r1":"Faster Shots",
+		"r2":"FASTER"
+	}
 }
 
 func _ready():
+	mainMap = get_parent().get_parent()
 	uiScript = get_parent().get_parent().get_node("UI")
 	audioPlayer = $AudioStreamPlayer2D
 	animatedSprite = $AnimatedSprite2D
@@ -38,9 +46,8 @@ func _ready():
 	#meshNode.scale = Vector2(20,20)
 
 func _process(_delta):
-	
 	if placed:
-		if clicked:meshNode.modulate = blackTransparent
+		if clicked:meshNode.modulate.a = 0.2; mainMap.selectedMonkey = self
 		else:meshNode.modulate.a = 0
 		var nearest_body
 		var arr = getEnemysInRange()
@@ -191,6 +198,7 @@ func _on_main_input_event(_viewport, event, _shape_idx):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			hideAllRangeShapes()
 			clicked = true
+			mainMap.changeButtonText(upgrades.names.l1, upgrades.names.r1)
 			
 			#meshNode.modulate = blackTransparent
 			print("clicked monkey")
