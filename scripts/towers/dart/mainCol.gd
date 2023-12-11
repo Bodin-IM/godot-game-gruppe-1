@@ -179,26 +179,11 @@ func attack():
 
 func _on_attack_cooldown_timeout():
 	start_attack()
-	
-func hideAllRangeShapes():
-	var allNodes = get_parent().get_children()
-	var arr = []
-	#var count = get_parent().get_child_count()
-	for child in allNodes:
-		if child.is_in_group("towers"):
-			arr.push_front(child)
-	print(arr)
-	if arr.size() > 0:
-		for node in arr:
-			node.clicked = false
-			node.get_node("rangeCol").get_node("rangeMesh").modulate.a = 0
+
 
 func _on_main_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			hideAllRangeShapes()
 			clicked = true
 			mainMap.changeButtonText(upgrades.names.l1, upgrades.names.r1)
-			
-			#meshNode.modulate = blackTransparent
-			print("clicked monkey")
+			mainMap.focusMonkey(self, upgrades)

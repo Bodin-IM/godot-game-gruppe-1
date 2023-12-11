@@ -19,6 +19,7 @@ var up1
 var up2
 
 func _ready():
+	path = get_node("TileMap/Node2D/Path2D")
 	ui = get_node("UI/Control")
 	up1 = ui.get_node("Upgrade_tab/HBoxContainer/knappL/Button")
 	up2 = ui.get_node("Upgrade_tab/HBoxContainer/knappR/Button")
@@ -72,6 +73,23 @@ func _process(_delta):
 func changeButtonText(b1,b2):
 	if b1.length() > 1: up1.text = b1
 	if b2.length() > 1: up2.text = b2
+	
+func hideAllRangeShapes():
+	var allNodes = get_node("TileMap").get_children()
+	var arr = []
+	for child in allNodes:
+		if child.is_in_group("towers"):
+			arr.push_front(child)
+	print(arr)
+	if arr.size() > 0:
+		for node in arr:
+			node.clicked = false
+			node.get_node("rangeCol").get_node("rangeMesh").modulate.a = 0	
+	
+func focusMonkey(monkey, upgrades):
+	hideAllRangeShapes()
+	print(monkey)
+	print(upgrades)	
 	
 func round_summon():
 	if roundReady:
