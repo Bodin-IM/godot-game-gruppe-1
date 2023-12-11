@@ -22,14 +22,10 @@ var mouseInNode
 var mainMap
 
 var upgrades = {
-	"left":[15,30], #range
-	"right":[20,40], #projectile speed
-	"names":{
-		"l1":"Range Increase",
-		"l2":"More Range",
-		"r1":"Faster Shots",
-		"r2":"FASTER"
-	}
+	"l1":{"name":"Range Increase","amount":15,"activated":false}, #range
+	"l2":{"name":"More Range","amount":30,"activated":false}, #range
+	"r1":{"name":"Faster Shots","amount":20,"activated":false}, #projectile speed
+	"r2":{"name":"FASTER","amount":40,"activated":false}, #projectile speed
 }
 
 func _ready():
@@ -184,6 +180,6 @@ func _on_attack_cooldown_timeout():
 func _on_main_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			clicked = true
-			mainMap.changeButtonText(upgrades.names.l1, upgrades.names.r1)
-			mainMap.focusMonkey(self, upgrades)
+			if placed:
+				clicked = true
+				mainMap.focusMonkey(self, upgrades)

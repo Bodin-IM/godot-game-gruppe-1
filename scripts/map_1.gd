@@ -64,11 +64,14 @@ func _ready():
 	],
 	]
 	
+	
 
 func _process(_delta):
 	if Input.is_action_just_pressed("fKeyPressed"):
 		if path.get_child_count() < 1:
 			round_summon()
+	if Input.is_action_just_pressed("e"):
+		get_node("TileMap").add_child(preload("res://scenes/dart.tscn").instantiate())	
 			
 func changeButtonText(b1,b2):
 	if b1.length() > 1: up1.text = b1
@@ -88,8 +91,13 @@ func hideAllRangeShapes():
 	
 func focusMonkey(monkey, upgrades):
 	hideAllRangeShapes()
-	print(monkey)
-	print(upgrades)	
+	print(upgrades)
+	var lUpgrade = "l1"
+	if upgrades.l1.activated: lUpgrade = "l2"
+	var rUpgrade = "r1"
+	if upgrades.r1.activated: rUpgrade = "r2"
+	changeButtonText(upgrades[lUpgrade].name,upgrades[rUpgrade].name)
+	monkey.meshNode.modulate.a = 0.2
 	
 func round_summon():
 	if roundReady:

@@ -2,7 +2,7 @@ extends CanvasLayer
 class_name UI
 var knapp
 var selectedMonkey
-#var
+
 
 func _ready():
 	knapp = $Control/MarginContainer/VBoxContainer/HBoxContainer/Button
