@@ -5633,6 +5633,10 @@ stream = ExtResource("17_jpk64")
 volume_db = 20.0
 autoplay = true
 
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="TileMap/Node2D/Spawn_CD" to="." method="_on_spawn_cd_timeout"]
+
 [editable path="TileMap/path hit boxes/path hitbox"]
 [editable path="TileMap/path hit boxes/path hitbox2"]
 [editable path="TileMap/path hit boxes/path hitbox3"]
