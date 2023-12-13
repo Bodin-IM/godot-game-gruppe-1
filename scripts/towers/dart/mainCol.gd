@@ -20,8 +20,10 @@ var projSpeed = 1000
 var uiScript
 var mouseInNode
 var mainMap
+var mouseInside = true
 
 var upgrades = {
+	"Description":"The Dart monkey is a cheap tower which is good for early game, but with its slow projectiles it doesnt perform well with higher level balloons...",
 	"l1":{"name":"Range Increase","amount":15,"activated":false}, #range
 	"l2":{"name":"More Range","amount":30,"activated":false}, #range
 	"r1":{"name":"Faster Shots","amount":20,"activated":false}, #projectile speed
@@ -183,3 +185,13 @@ func _on_main_input_event(_viewport, event, _shape_idx):
 			if placed:
 				clicked = true
 				mainMap.focusMonkey(self, upgrades)
+
+
+func _on_main_mouse_entered():
+	mouseInside = true
+	print("mouseInside")
+
+
+func _on_main_mouse_exited():
+	mouseInside = false
+	print("mouseNotInside")

@@ -17,14 +17,15 @@ var selectedMonkey
 var ui
 var up1
 var up2
+var infoSlot
 
 func _ready():
 	path = get_node("TileMap/Node2D/Path2D")
 	ui = get_node("UI/Control")
 	up1 = ui.get_node("Upgrade_tab/HBoxContainer/knappL/Button")
 	up2 = ui.get_node("Upgrade_tab/HBoxContainer/knappR/Button")
-	#up1.text = selectedMonkey.upgrades.names.l1
-	#up2.text = selectedMonkey.upgrades.names.r1
+	infoSlot = ui.get_node("Upgrade_tab/HBoxContainer/HBoxContainer/label/infoLabel")
+
 	balloons = {
 		"red":{
 			"speed":2,
@@ -67,37 +68,58 @@ func _ready():
 	
 
 func _process(_delta):
+	if Input.is_action_just_pressed("normalClick"):
+		var towerNodes = get_node("TileMap").get_children()
+		var towerFound = false
+		for node in towerNodes:
+			if node.is_in_group("towers") && node.mouseInside:
+				node.clicked = true
+				focusMonkey(node, node.upgrades)
+				towerFound = true
+				break
+			elif node.is_in_group("ui"):
+				towerFound = true
+				break
+		if !towerFound:
+			hideAllRangeShapes(null)
+			infoSlot.text = "info about towers"
+			up1.text = "upgrade 1"
+			up2.text = "upgrade 2"
 	if Input.is_action_just_pressed("fKeyPressed"):
-		if path.get_child_count() < 1:
-			round_summon()
+		startRound()
 	if Input.is_action_just_pressed("e"):
 		get_node("TileMap").add_child(preload("res://scenes/dart.tscn").instantiate())	
-			
-func changeButtonText(b1,b2):
-	if b1.length() > 1: up1.text = b1
-	if b2.length() > 1: up2.text = b2
 	
-func hideAllRangeShapes():
+func startRound():
+	if path.get_child_count() < 1:
+		ui.get_node("tower_tab/startKnapp/Button").text = "Round Active"
+		round_summon()
+		
+func changeButtonText(b1,b2,desc):
+	if b1.length() > 0: up1.text = b1
+	if b2.length() > 0: up2.text = b2
+	if desc.length() > 0: infoSlot.text = desc
+	
+func hideAllRangeShapes(monkey):
 	var allNodes = get_node("TileMap").get_children()
 	var arr = []
 	for child in allNodes:
 		if child.is_in_group("towers"):
 			arr.push_front(child)
-	print(arr)
 	if arr.size() > 0:
 		for node in arr:
 			node.clicked = false
-			node.get_node("rangeCol").get_node("rangeMesh").modulate.a = 0	
+	if !monkey == null:
+		monkey.clicked = true
 	
 func focusMonkey(monkey, upgrades):
-	hideAllRangeShapes()
-	print(upgrades)
+	#print("focusing monkey: ");print(monkey);print(upgrades)
+	hideAllRangeShapes(monkey)
 	var lUpgrade = "l1"
 	if upgrades.l1.activated: lUpgrade = "l2"
 	var rUpgrade = "r1"
 	if upgrades.r1.activated: rUpgrade = "r2"
-	changeButtonText(upgrades[lUpgrade].name,upgrades[rUpgrade].name)
-	monkey.meshNode.modulate.a = 0.2
+	changeButtonText(upgrades[lUpgrade].name,upgrades[rUpgrade].name,upgrades.Description)
 	
 func round_summon():
 	if roundReady:
@@ -121,6 +143,8 @@ func wave_summon():
 		wave_summon()
 	else:
 		roundReady = true
+		get_node('UI').roundActive = false
+		ui.get_node("tower_tab/startKnapp/Button").text = "Start round"
 	
 
 func spawn_ballon(frames, speed, damage, type, newBalloon):
