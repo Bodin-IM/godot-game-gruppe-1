@@ -18,6 +18,8 @@ var ui
 var up1
 var up2
 var infoSlot
+var placing = false
+var waitTime = 1
 
 func _ready():
 	path = get_node("TileMap/Node2D/Path2D")
@@ -87,8 +89,13 @@ func _process(_delta):
 			up2.text = "upgrade 2"
 	if Input.is_action_just_pressed("fKeyPressed"):
 		startRound()
-	if Input.is_action_just_pressed("e"):
-		get_node("TileMap").add_child(preload("res://scenes/dart.tscn").instantiate())	
+	checkPlacement()
+	
+func checkPlacement():
+	if Input.is_action_just_pressed("q"):
+		if !placing:
+			placing = true
+			$TileMap.add_child(preload("res://scenes/dart.tscn").instantiate())	
 	
 func startRound():
 	if path.get_child_count() < 1:
@@ -123,6 +130,8 @@ func focusMonkey(monkey, upgrades):
 	
 func round_summon():
 	if roundReady:
+		$TileMap/Node2D/Spawn_CD.wait_time = waitTime
+		waitTime = waitTime*0.9
 		roundReady = false
 		current_wave = -1
 		current_round += 1

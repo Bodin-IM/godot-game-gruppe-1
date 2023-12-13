@@ -63,6 +63,7 @@ func _process(_delta):
 		if placeable:
 			audioPlayer.stream = preload("res://assets/tower_place.wav")
 			audioPlayer.play()
+			mainMap.placing = false
 			placed = true
 			placeable = false
 

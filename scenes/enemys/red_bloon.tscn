@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cff0abcvoserp"]
+[gd_scene load_steps=5 format=3 uid="uid://cff0abcvoserp"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/red_bloon.gd" id="1_qrwuy"]
-[ext_resource type="Texture2D" uid="uid://byh6i6o5lnrwu" path="res://Assets/dartProj.png" id="2_mv5rp"]
+[ext_resource type="SpriteFrames" uid="uid://ctsegsm0cp68i" path="res://Assets/bloon_sprite_frames/red_sprite_frames.tres" id="2_4blbj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_topp8"]
 radius = 53.0
@@ -10,21 +10,6 @@ height = 144.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nfp0m"]
 radius = 53.0
 height = 144.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yovna"]
-atlas = ExtResource("2_mv5rp")
-region = Rect2(0, 0, 149, 136)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_a1ns0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yovna")
-}],
-"loop": false,
-"name": &"Initial_color",
-"speed": 5.0
-}]
 
 [node name="Red_Baloon" type="Area2D" groups=["Enemys"]]
 script = ExtResource("1_qrwuy")
@@ -40,8 +25,7 @@ position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_nfp0m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_a1ns0")
-animation = &"Initial_color"
+sprite_frames = ExtResource("2_4blbj")
 
 [node name="popped" type="Timer" parent="."]
 wait_time = 0.001
