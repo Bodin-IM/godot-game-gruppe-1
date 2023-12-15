@@ -5418,7 +5418,7 @@ _data = {
 }
 point_count = 12
 
-[node name="map1" type="Node2D"]
+[node name="map" type="Node2D"]
 script = ExtResource("1_h0e4a")
 
 [node name="UI" parent="." instance=ExtResource("2_1wutf")]
@@ -5611,16 +5611,16 @@ position = Vector2(415.819, -46.1864)
 [node name="CollisionShape2D" parent="TileMap/smallbush_hitbox/smallbush_hitbox4" index="0"]
 position = Vector2(63.9831, -13.7712)
 
-[node name="Node2D" type="Node2D" parent="TileMap"]
+[node name="path" type="Node2D" parent="TileMap"]
 z_index = 4
 position = Vector2(-8.47458, 19.774)
 
-[node name="Path2D" type="Path2D" parent="TileMap/Node2D"]
+[node name="Path2D" type="Path2D" parent="TileMap/path"]
 position = Vector2(12.3864, -21.574)
 scale = Vector2(0.975282, 1.01095)
 curve = SubResource("Curve2D_q2w7t")
 
-[node name="Spawn_CD" type="Timer" parent="TileMap/Node2D"]
+[node name="Spawn_CD" type="Timer" parent="TileMap/path"]
 
 [node name="dart_monkey" parent="TileMap" instance=ExtResource("16_3b3nd")]
 z_as_relative = false
@@ -5635,7 +5635,7 @@ autoplay = true
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="timeout" from="TileMap/Node2D/Spawn_CD" to="." method="_on_spawn_cd_timeout"]
+[connection signal="timeout" from="TileMap/path/Spawn_CD" to="." method="_on_spawn_cd_timeout"]
 
 [editable path="TileMap/path hit boxes/path hitbox"]
 [editable path="TileMap/path hit boxes/path hitbox2"]
