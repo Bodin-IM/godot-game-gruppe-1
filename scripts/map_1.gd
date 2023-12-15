@@ -25,44 +25,6 @@ func _ready():
 	up2 = ui.get_node("Upgrade_tab/HBoxContainer/knappR/Button")
 	#up1.text = selectedMonkey.upgrades.names.l1
 	#up2.text = selectedMonkey.upgrades.names.r1
-	balloons = {
-		"red":{
-			"speed":2,
-			"dmg":1,
-			"frames":preload("res://Assets/bloon_sprite_frames/red_sprite_frames.tres"),
-			"type":"red"
-		},
-		"blue":{
-			"speed":3,
-			"dmg":2,
-			"frames":preload("res://Assets/bloon_sprite_frames/blue_sprite_frames.tres"),
-			"type":"blue"
-		},
-	}
-	
-	rounds = [
-	[
-	{"type":balloons.red, "amount":3}, 
-	{"type":balloons.blue, "amount":8},
-	{"type":balloons.red, "amount":6}, 
-	{"type":balloons.blue, "amount":3}, 
-	{"type":balloons.red, "amount":2}, 
-	],
-	[
-	{"type":balloons.red, "amount":3}, 
-	{"type":balloons.blue, "amount":8},
-	{"type":balloons.red, "amount":6}, 
-	{"type":balloons.blue, "amount":3}, 
-	{"type":balloons.red, "amount":2}, 
-	],
-	[
-	{"type":balloons.red, "amount":3}, 
-	{"type":balloons.blue, "amount":8},
-	{"type":balloons.red, "amount":6}, 
-	{"type":balloons.blue, "amount":3}, 
-	{"type":balloons.red, "amount":2}, 
-	],
-	]
 	
 
 func _process(_delta):
@@ -99,7 +61,7 @@ func round_summon():
 		wave_summon()
 		
 func wave_summon():
-	var wave = rounds[current_round][current_wave]
+	var wave = $TileMap/Node2D/Path2D.rounds[current_round][current_wave]
 	var speed = wave.type.speed
 	var dmg = wave.type.dmg
 	var type = wave.type.type
@@ -108,7 +70,7 @@ func wave_summon():
 		spawn_ballon(wave.type.frames, speed, dmg, type, false)
 		$TileMap/Node2D/Spawn_CD.start()
 		await($TileMap/Node2D/Spawn_CD.timeout)
-	if rounds[current_round].size() > current_wave + 1:
+	if $TileMap/Node2D/Path2D.rounds[current_round].size() > current_wave + 1:
 		current_wave += 1
 		wave_summon()
 	else:
@@ -129,6 +91,7 @@ func spawn_ballon(frames, speed, damage, type, newBalloon):
 		
 func newBalloon(type, pos):
 	testProg = pos
+	balloons = $TileMap/Node2D/Path2D.balloons
 	if type == "red":
 		spawn_ballon(balloons.red.frames, balloons.red.speed, balloons.red.dmg, type, true)
 	
