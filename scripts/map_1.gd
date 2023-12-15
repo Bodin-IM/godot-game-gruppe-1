@@ -20,12 +20,13 @@ var up2
 var infoSlot
 var placing = false
 var waitTime = 1
+var selectedUpgrade = {"monkey":"","upgrades":[]}
 
 func _ready():
 	path = get_node("TileMap/Node2D/Path2D")
 	ui = get_node("UI/Control")
-	up1 = ui.get_node("Upgrade_tab/HBoxContainer/knappL/Button")
-	up2 = ui.get_node("Upgrade_tab/HBoxContainer/knappR/Button")
+	up1 = ui.get_node("Upgrade_tab/HBoxContainer/knappL/venstreKnapp")
+	up2 = ui.get_node("Upgrade_tab/HBoxContainer/knappR/høyreKnapp")
 	infoSlot = ui.get_node("Upgrade_tab/HBoxContainer/HBoxContainer/label/infoLabel")
 
 	balloons = {
@@ -87,6 +88,7 @@ func _process(_delta):
 			infoSlot.text = "info about towers"
 			up1.text = "upgrade 1"
 			up2.text = "upgrade 2"
+			selectedUpgrade.monkey = null
 	if Input.is_action_just_pressed("fKeyPressed"):
 		startRound()
 	checkPlacement()
@@ -119,6 +121,14 @@ func hideAllRangeShapes(monkey):
 	if !monkey == null:
 		monkey.clicked = true
 	
+func initUpgrade(side):
+	if selectedUpgrade.monkey == null: return
+	var monkey = selectedUpgrade.monkey
+	if side == "L":
+		monkey.testUpgrade(selectedUpgrade.upgrades[0])
+	elif side == "R":
+		monkey.testUpgrade(selectedUpgrade.upgrades[1])
+	
 func focusMonkey(monkey, upgrades):
 	#print("focusing monkey: ");print(monkey);print(upgrades)
 	hideAllRangeShapes(monkey)
@@ -126,6 +136,8 @@ func focusMonkey(monkey, upgrades):
 	if upgrades.l1.activated: lUpgrade = "l2"
 	var rUpgrade = "r1"
 	if upgrades.r1.activated: rUpgrade = "r2"
+	selectedUpgrade.monkey = monkey
+	selectedUpgrade.upgrades = [lUpgrade,rUpgrade]
 	changeButtonText(upgrades[lUpgrade].name,upgrades[rUpgrade].name,upgrades.Description)
 	
 func round_summon():

@@ -97,7 +97,7 @@ autowrap_mode = 1
 [node name="knappL" type="MarginContainer" parent="Control/Upgrade_tab/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/Upgrade_tab/HBoxContainer/knappL"]
+[node name="venstreKnapp" type="Button" parent="Control/Upgrade_tab/HBoxContainer/knappL"]
 layout_mode = 2
 text = "Upgrade 1
 "
@@ -105,8 +105,10 @@ text = "Upgrade 1
 [node name="knappR" type="MarginContainer" parent="Control/Upgrade_tab/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/Upgrade_tab/HBoxContainer/knappR"]
+[node name="høyreKnapp" type="Button" parent="Control/Upgrade_tab/HBoxContainer/knappR"]
 layout_mode = 2
 text = "Upgrade 2"
 
 [connection signal="button_down" from="Control/tower_tab/startKnapp/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/Upgrade_tab/HBoxContainer/knappL/venstreKnapp" to="." method="_on_venstre_knapp_button_down"]
+[connection signal="button_down" from="Control/Upgrade_tab/HBoxContainer/knappR/høyreKnapp" to="." method="_on_høyre_knapp_button_down"]

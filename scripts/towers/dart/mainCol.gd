@@ -26,8 +26,8 @@ var upgrades = {
 	"Description":"The Dart monkey is a cheap tower which is good for early game, but with its slow projectiles it doesnt perform well with higher level balloons...",
 	"l1":{"name":"Range Increase","amount":15,"activated":false}, #range
 	"l2":{"name":"More Range","amount":30,"activated":false}, #range
-	"r1":{"name":"Faster Shots","amount":20,"activated":false}, #projectile speed
-	"r2":{"name":"FASTER","amount":40,"activated":false}, #projectile speed
+	"r1":{"name":"Faster Shots","amount":30,"activated":false}, #projectile speed
+	"r2":{"name":"FASTER","amount":50,"activated":false}, #projectile speed
 }
 
 func _ready():
@@ -73,19 +73,19 @@ func setRangeToNull():
 
 func testUpgrade(upgradeValue):
 	if upgradeValue == "l1":
-		setRangeToNull()
-		var scaleVal = 1+(upgrades.left[0]/100)
-		scale = Vector2(scaleVal, scaleVal)
-		meshNode.scale = Vector2(scaleVal, scaleVal)
+		#setRangeToNull()
+		var scaleVal = 1+(upgrades.l1.amount)/100
+		rangeCol.scale = Vector2(scaleVal,scaleVal)
+		meshNode.scale = Vector2(scaleVal,scaleVal)
 	elif upgradeValue == "l2":
 		setRangeToNull()
-		var scaleVal = 1+(upgrades.left[1]/100)
-		scale = Vector2(scaleVal, scaleVal)
+		var scaleVal = 1 + (upgrades.l2.amount / 100)
+		rangeCol.scale = Vector2(scaleVal, scaleVal)
 		meshNode.scale = Vector2(scaleVal, scaleVal)
 	elif upgradeValue == "r1":
-		projSpeed = 1000+(upgrades.right[0]*10)
+		projSpeed = 1000+(upgrades.r1.amount*10)
 	elif upgradeValue == "r2":
-		projSpeed = 1000+(upgrades.right[1]*10)
+		projSpeed = 1000+(upgrades.r2.amount*10)
 	rangeCol.get_node("range").scale = Vector2(30,30)
 
 func getEnemysInRange():
