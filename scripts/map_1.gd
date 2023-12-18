@@ -19,7 +19,7 @@ var up1
 var up2
 
 func _ready():
-	path = get_node("TileMap/Node2D/Path2D")
+	path = get_node("TileMap/path/Path2D")
 	ui = get_node("UI/Control")
 	up1 = ui.get_node("Upgrade_tab/HBoxContainer/knappL/Button")
 	up2 = ui.get_node("Upgrade_tab/HBoxContainer/knappR/Button")
@@ -81,7 +81,7 @@ func spawn_ballon(frames, speed, damage, type, newBalloon):
 		print("spawned")
 		var instance = bloon_scene.instantiate()
 		instance.set_values(frames, speed, damage, type)
-		instance.scale = Vector2(0.2,0.2)
+		instance.scale = Vector2(0.35,0.35)
 		var path_follow_new = PathFollow2D.new()
 		if newBalloon: path_follow_new.progress = testProg
 		path_follow_new.set_rotates(false)
