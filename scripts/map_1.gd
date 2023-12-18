@@ -61,16 +61,16 @@ func round_summon():
 		wave_summon()
 		
 func wave_summon():
-	var wave = $TileMap/Node2D/Path2D.rounds[current_round][current_wave]
+	var wave = $TileMap/path/Path2D.rounds[current_round][current_wave]
 	var speed = wave.type.speed
 	var dmg = wave.type.dmg
 	var type = wave.type.type
 	
 	for i in range(wave.amount):
 		spawn_ballon(wave.type.frames, speed, dmg, type, false)
-		$TileMap/Node2D/Spawn_CD.start()
-		await($TileMap/Node2D/Spawn_CD.timeout)
-	if $TileMap/Node2D/Path2D.rounds[current_round].size() > current_wave + 1:
+		$TileMap/path/Spawn_CD.start()
+		await($TileMap/path/Spawn_CD.timeout)
+	if $TileMap/path/Path2D.rounds[current_round].size() > current_wave + 1:
 		current_wave += 1
 		wave_summon()
 	else:
@@ -91,7 +91,7 @@ func spawn_ballon(frames, speed, damage, type, newBalloon):
 		
 func newBalloon(type, pos):
 	testProg = pos
-	balloons = $TileMap/Node2D/Path2D.balloons
+	balloons = $TileMap/path/Path2D.balloons
 	if type == "red":
 		spawn_ballon(balloons.red.frames, balloons.red.speed, balloons.red.dmg, type, true)
 	
