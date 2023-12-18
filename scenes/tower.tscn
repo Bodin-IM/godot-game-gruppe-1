@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bs0rc2qjorj7a"]
 
+[ext_resource type="Script" path="res://scripts/towers/dart/dart_script.gd" id="1_3ld5w"]
 [ext_resource type="Texture2D" uid="uid://cpofpbi4l2l7l" path="res://Assets/darts.png" id="1_12dvc"]
-[ext_resource type="Script" path="res://scripts/towers/dart/mainCol.gd" id="1_wq2sx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ktkjf"]
 atlas = ExtResource("1_12dvc")
@@ -31,7 +31,7 @@ height = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0dmd8"]
 
 [node name="tower" type="Area2D"]
-script = ExtResource("1_wq2sx")
+script = ExtResource("1_3ld5w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3

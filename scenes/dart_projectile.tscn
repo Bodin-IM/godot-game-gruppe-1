@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpv6v0oehklh0"]
 
-[ext_resource type="Script" path="res://scripts/dartProjectile.gd" id="1_5mndl"]
+[ext_resource type="Script" path="res://scripts/towers/dart/dartProjectile.gd" id="1_5mndl"]
 [ext_resource type="Texture2D" uid="uid://byh6i6o5lnrwu" path="res://Assets/dartProj.png" id="2_dmyt8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkwdp"]

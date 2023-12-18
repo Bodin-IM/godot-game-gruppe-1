@@ -1,7 +1,7 @@
-[gd_scene load_steps=51 format=3 uid="uid://cxim2ulmtmbh8"]
+[gd_scene load_steps=50 format=3 uid="uid://cxim2ulmtmbh8"]
 
 [ext_resource type="Texture2D" uid="uid://blycju4s2yvvb" path="res://tilemap assets/Trees_Bushes.png" id="1_1opco"]
-[ext_resource type="Script" path="res://scripts/map_1.gd" id="1_h0e4a"]
+[ext_resource type="Script" path="res://scripts/map_script.gd" id="1_o3vlk"]
 [ext_resource type="PackedScene" uid="uid://bh2joby61o72h" path="res://scenes/ui.tscn" id="2_1wutf"]
 [ext_resource type="Texture2D" uid="uid://r3gsaq0l1pnt" path="res://tilemap assets/Tileset_Road.png" id="2_jn6qp"]
 [ext_resource type="Texture2D" uid="uid://ccryp2aoof63f" path="res://tilemap assets/Islands v0.2/Nature.png" id="3_7rnpk"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://duaxdv8ow2xyj" path="res://scenes/bush_hitbox.tscn" id="17_dald3"]
 [ext_resource type="AudioStream" uid="uid://c0g8def6wamy6" path="res://music/map_1_music.mp3.mp3" id="17_jpk64"]
 [ext_resource type="PackedScene" uid="uid://mmcjvhcrodf5" path="res://scenes/smallbush_hitbox.tscn" id="18_jgcqo"]
-[ext_resource type="Script" path="res://scripts/test/wave_summon.gd" id="19_q6bxp"]
+[ext_resource type="Script" path="res://scripts/Enemies/wave_summon.gd" id="19_hne55"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qd751"]
 texture = ExtResource("1_1opco")
@@ -5419,7 +5419,7 @@ _data = {
 point_count = 12
 
 [node name="map" type="Node2D"]
-script = ExtResource("1_h0e4a")
+script = ExtResource("1_o3vlk")
 
 [node name="UI" parent="." instance=ExtResource("2_1wutf")]
 
@@ -5619,7 +5619,7 @@ position = Vector2(-8.47458, 19.774)
 position = Vector2(12.3864, -21.574)
 scale = Vector2(0.975282, 1.01095)
 curve = SubResource("Curve2D_q2w7t")
-script = ExtResource("19_q6bxp")
+script = ExtResource("19_hne55")
 
 [node name="Spawn_CD" type="Timer" parent="TileMap/path"]
 

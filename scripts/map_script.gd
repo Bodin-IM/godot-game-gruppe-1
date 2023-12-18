@@ -21,16 +21,17 @@ var infoSlot
 var placing = false
 var waitTime = 1
 var selectedUpgrade = {"monkey":"","upgrades":[]}
+var pathRoot
+var spawnTimer
 
 func _ready():
-	path = get_node("TileMap/path/Path2D")
+	path = $TileMap/path/Path2D
+	pathRoot = $TileMap/path
+	spawnTimer = $TileMap/path/Spawn_CD
 	ui = get_node("UI/Control")
-	up1 = ui.get_node("Upgrade_tab/HBoxContainer/knappL/Button")
-	up2 = ui.get_node("Upgrade_tab/HBoxContainer/knappR/Button")
-	#up1.text = selectedMonkey.upgrades.names.l1
-	#up2.text = selectedMonkey.upgrades.names.r1
-	
-	
+	up1 = ui.get_node("Upgrade_tab/HBoxContainer/knappL/venstreKnapp")
+	up2 = ui.get_node("Upgrade_tab/HBoxContainer/knappR/høyreKnapp")
+	infoSlot = ui.get_node("Upgrade_tab/HBoxContainer/HBoxContainer/label/infoLabel")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("normalClick"):
@@ -104,7 +105,7 @@ func focusMonkey(monkey, upgrades):
 	
 func round_summon():
 	if roundReady:
-		$TileMap/Node2D/Spawn_CD.wait_time = waitTime
+		pathRoot.get_node("Spawn_CD").wait_time = waitTime
 		waitTime = waitTime*0.9
 		roundReady = false
 		current_wave = -1
@@ -112,16 +113,15 @@ func round_summon():
 		wave_summon()
 		
 func wave_summon():
-	var wave = $TileMap/path/Path2D.rounds[current_round][current_wave]
+	var wave = path.rounds[current_round][current_wave]
 	var speed = wave.type.speed
 	var dmg = wave.type.dmg
 	var type = wave.type.type
-	
 	for i in range(wave.amount):
 		spawn_ballon(wave.type.frames, speed, dmg, type, false)
-		$TileMap/path/Spawn_CD.start()
-		await($TileMap/path/Spawn_CD.timeout)
-	if $TileMap/path/Path2D.rounds[current_round].size() > current_wave + 1:
+		spawnTimer.start()
+		await(spawnTimer.timeout)
+	if path.rounds[current_round].size() > current_wave + 1:
 		current_wave += 1
 		wave_summon()
 	else:
@@ -134,7 +134,7 @@ func spawn_ballon(frames, speed, damage, type, newBalloon):
 		print("spawned")
 		var instance = bloon_scene.instantiate()
 		instance.set_values(frames, speed, damage, type)
-		instance.scale = Vector2(0.35,0.35)
+		instance.scale = Vector2(0.2,0.2)
 		var path_follow_new = PathFollow2D.new()
 		if newBalloon: path_follow_new.progress = testProg
 		path_follow_new.set_rotates(false)
@@ -144,7 +144,7 @@ func spawn_ballon(frames, speed, damage, type, newBalloon):
 		
 func newBalloon(type, pos):
 	testProg = pos
-	balloons = $TileMap/path/Path2D.balloons
+	balloons = path.balloons
 	if type == "red":
 		spawn_ballon(balloons.red.frames, balloons.red.speed, balloons.red.dmg, type, true)
 	
