@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dflbnm02l2ift" path="res://tilemap assets/Barrel_2.png" id="8_ypchp"]
 [ext_resource type="Texture2D" uid="uid://bpyfovep1l2w1" path="res://tilemap assets/Banner_1.png" id="9_vvdax"]
 [ext_resource type="Texture2D" uid="uid://dxjxfof0k5ih6" path="res://tilemap assets/Islands v0.2/terrain.png" id="10_ec2en"]
-[ext_resource type="PackedScene" path="res://scenes/path_hitbox.tscn" id="13_ufuen"]
+[ext_resource type="PackedScene" uid="uid://bequax7o27icx" path="res://scenes/path_hitbox.tscn" id="13_ufuen"]
 [ext_resource type="PackedScene" uid="uid://du087cke5sqtj" path="res://scenes/prop_hitbox.tscn" id="16_aungn"]
 [ext_resource type="PackedScene" uid="uid://duaxdv8ow2xyj" path="res://scenes/bush_hitbox.tscn" id="17_dald3"]
 [ext_resource type="AudioStream" uid="uid://c0g8def6wamy6" path="res://music/map_1_music.mp3.mp3" id="17_jpk64"]
