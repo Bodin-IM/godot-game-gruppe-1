@@ -827,6 +827,7 @@ texture = ExtResource("3_ixb3v")
 15:9/0 = 0
 17:9/size_in_atlas = Vector2i(2, 4)
 17:9/0 = 0
+17:9/0/y_sort_origin = -17
 15:13/size_in_atlas = Vector2i(2, 2)
 15:13/0 = 0
 17:13/size_in_atlas = Vector2i(2, 2)
@@ -1230,6 +1231,7 @@ size = Vector2(51, 60)
 size = Vector2(51, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_640pw"]
+size = Vector2(86.1362, 125.345)
 
 [node name="map" type="Node2D"]
 script = ExtResource("1_6xjlr")
@@ -1389,7 +1391,8 @@ shape = SubResource("RectangleShape2D_x52yx")
 position = Vector2(736, 8)
 
 [node name="prop hitbox 2" parent="TileMap/prop hitbox/prop hitbox 7" index="0"]
-position = Vector2(-1, -31)
+position = Vector2(-1.30939, -31.4564)
+scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_640pw")
 
 [node name="dart_monkey" parent="TileMap" instance=ExtResource("8_r484v")]
