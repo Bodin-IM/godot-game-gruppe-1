@@ -20,16 +20,14 @@ var projSpeed = 1000
 var uiScript
 var mouseInNode
 var mainMap
+var mouseInside = true
 
 var upgrades = {
-	"left":[15,30], #range
-	"right":[20,40], #projectile speed
-	"names":{
-		"l1":"Range Increase",
-		"l2":"More Range",
-		"r1":"Faster Shots",
-		"r2":"FASTER"
-	}
+	"Description":"The Dart monkey is a cheap tower which is good for early game, but with its slow projectiles it doesnt perform well with higher level balloons...",
+	"l1":{"name":"Range Increase","amount":15,"activated":false}, #range
+	"l2":{"name":"More Range","amount":30,"activated":false}, #range
+	"r1":{"name":"Faster Shots","amount":30,"activated":false}, #projectile speed
+	"r2":{"name":"FASTER","amount":50,"activated":false}, #projectile speed
 }
 
 func _ready():
@@ -65,6 +63,7 @@ func _process(_delta):
 		if placeable:
 			audioPlayer.stream = preload("res://assets/tower_place.wav")
 			audioPlayer.play()
+			mainMap.placing = false
 			placed = true
 			placeable = false
 
@@ -74,19 +73,19 @@ func setRangeToNull():
 
 func testUpgrade(upgradeValue):
 	if upgradeValue == "l1":
-		setRangeToNull()
-		var scaleVal = 1+(upgrades.left[0]/100)
-		scale = Vector2(scaleVal, scaleVal)
-		meshNode.scale = Vector2(scaleVal, scaleVal)
+		#setRangeToNull()
+		var scaleVal = 1+(upgrades.l1.amount)/100
+		rangeCol.scale = Vector2(scaleVal,scaleVal)
+		meshNode.scale = Vector2(scaleVal,scaleVal)
 	elif upgradeValue == "l2":
 		setRangeToNull()
-		var scaleVal = 1+(upgrades.left[1]/100)
-		scale = Vector2(scaleVal, scaleVal)
+		var scaleVal = 1 + (upgrades.l2.amount / 100)
+		rangeCol.scale = Vector2(scaleVal, scaleVal)
 		meshNode.scale = Vector2(scaleVal, scaleVal)
 	elif upgradeValue == "r1":
-		projSpeed = 1000+(upgrades.right[0]*10)
+		projSpeed = 1000+(upgrades.r1.amount*10)
 	elif upgradeValue == "r2":
-		projSpeed = 1000+(upgrades.right[1]*10)
+		projSpeed = 1000+(upgrades.r2.amount*10)
 	rangeCol.get_node("range").scale = Vector2(30,30)
 
 func getEnemysInRange():
@@ -184,6 +183,16 @@ func _on_attack_cooldown_timeout():
 func _on_main_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			clicked = true
-			mainMap.changeButtonText(upgrades.names.l1, upgrades.names.r1)
-			mainMap.focusMonkey(self, upgrades)
+			if placed:
+				clicked = true
+				mainMap.focusMonkey(self, upgrades)
+
+
+func _on_main_mouse_entered():
+	mouseInside = true
+	print("mouseInside")
+
+
+func _on_main_mouse_exited():
+	mouseInside = false
+	print("mouseNotInside")

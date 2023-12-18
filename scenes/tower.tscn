@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://bs0rc2qjorj7a"]
+
+[ext_resource type="Texture2D" uid="uid://cpofpbi4l2l7l" path="res://Assets/darts.png" id="1_12dvc"]
+[ext_resource type="Script" path="res://scripts/towers/dart/mainCol.gd" id="1_wq2sx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktkjf"]
+atlas = ExtResource("1_12dvc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m75qx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktkjf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f8lrf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stnrp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_p7ers"]
+radius = 10.0
+height = 20.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hcowt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dmd8"]
+
+[node name="tower" type="Area2D"]
+script = ExtResource("1_wq2sx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_m75qx")
+animation = &"idle"
+offset = Vector2(0, -15)
+
+[node name="rangeCol" type="Area2D" parent="."]
+z_index = 1
+
+[node name="range" type="CollisionShape2D" parent="rangeCol"]
+scale = Vector2(20, 20)
+shape = SubResource("CircleShape2D_f8lrf")
+
+[node name="rangeMesh" type="MeshInstance2D" parent="rangeCol"]
+modulate = Color(0, 0, 0, 0)
+z_index = 1
+material = SubResource("ShaderMaterial_stnrp")
+position = Vector2(-3.05176e-05, 0)
+scale = Vector2(20, 20)
+mesh = SubResource("SphereMesh_p7ers")
+texture = SubResource("ViewportTexture_hcowt")
+
+[node name="main" type="Area2D" parent="." groups=["mainCol"]]
+z_index = 1
+
+[node name="mainCol" type="CollisionShape2D" parent="main"]
+z_index = 1
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_0dmd8")
+
+[node name="attackCooldown" type="Timer" parent="."]
+wait_time = 1.115
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+z_index = 2

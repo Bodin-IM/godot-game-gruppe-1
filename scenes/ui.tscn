@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh2joby61o72h"]
+[gd_scene load_steps=6 format=3 uid="uid://bh2joby61o72h"]
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_dkw8j"]
 
@@ -13,7 +13,9 @@ font_color = Color(0.768627, 0.392157, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrwgg"]
 bg_color = Color(0.294118, 0.133333, 0, 1)
 
-[node name="UI" type="CanvasLayer"]
+[sub_resource type="LabelSettings" id="LabelSettings_l517u"]
+
+[node name="UI" type="CanvasLayer" groups=["ui"]]
 script = ExtResource("1_dkw8j")
 metadata/_edit_vertical_guides_ = []
 
@@ -48,7 +50,7 @@ alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/tower_tab/HBoxContainer2"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/tower_tab/HBoxContainer2/VBoxContainer"]
+[node name="label" type="Label" parent="Control/tower_tab/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Monkeys"
 label_settings = SubResource("LabelSettings_kyrvf")
@@ -84,15 +86,18 @@ size_flags_horizontal = 3
 
 [node name="label" type="MarginContainer" parent="Control/Upgrade_tab/HBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Control/Upgrade_tab/HBoxContainer/HBoxContainer/label"]
+[node name="infoLabel" type="Label" parent="Control/Upgrade_tab/HBoxContainer/HBoxContainer/label"]
 layout_mode = 2
 text = "INFO OM OPGRADES OSV."
+label_settings = SubResource("LabelSettings_l517u")
+autowrap_mode = 1
 
 [node name="knappL" type="MarginContainer" parent="Control/Upgrade_tab/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/Upgrade_tab/HBoxContainer/knappL"]
+[node name="venstreKnapp" type="Button" parent="Control/Upgrade_tab/HBoxContainer/knappL"]
 layout_mode = 2
 text = "Upgrade 1
 "
@@ -100,8 +105,10 @@ text = "Upgrade 1
 [node name="knappR" type="MarginContainer" parent="Control/Upgrade_tab/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/Upgrade_tab/HBoxContainer/knappR"]
+[node name="høyreKnapp" type="Button" parent="Control/Upgrade_tab/HBoxContainer/knappR"]
 layout_mode = 2
 text = "Upgrade 2"
 
-[connection signal="button_down" from="Control/Upgrade_tab/HBoxContainer/knappL/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/tower_tab/startKnapp/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/Upgrade_tab/HBoxContainer/knappL/venstreKnapp" to="." method="_on_venstre_knapp_button_down"]
+[connection signal="button_down" from="Control/Upgrade_tab/HBoxContainer/knappR/høyreKnapp" to="." method="_on_høyre_knapp_button_down"]

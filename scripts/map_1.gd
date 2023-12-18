@@ -17,6 +17,10 @@ var selectedMonkey
 var ui
 var up1
 var up2
+var infoSlot
+var placing = false
+var waitTime = 1
+var selectedUpgrade = {"monkey":"","upgrades":[]}
 
 func _ready():
 	path = get_node("TileMap/path/Path2D")
@@ -26,35 +30,82 @@ func _ready():
 	#up1.text = selectedMonkey.upgrades.names.l1
 	#up2.text = selectedMonkey.upgrades.names.r1
 	
+	
 
 func _process(_delta):
+	if Input.is_action_just_pressed("normalClick"):
+		var towerNodes = get_node("TileMap").get_children()
+		var towerFound = false
+		for node in towerNodes:
+			if node.is_in_group("towers") && node.mouseInside:
+				node.clicked = true
+				focusMonkey(node, node.upgrades)
+				towerFound = true
+				break
+			elif node.is_in_group("ui"):
+				towerFound = true
+				break
+		if !towerFound:
+			hideAllRangeShapes(null)
+			infoSlot.text = "info about towers"
+			up1.text = "upgrade 1"
+			up2.text = "upgrade 2"
+			selectedUpgrade.monkey = null
 	if Input.is_action_just_pressed("fKeyPressed"):
-		if path.get_child_count() < 1:
-			round_summon()
-			
-func changeButtonText(b1,b2):
-	if b1.length() > 1: up1.text = b1
-	if b2.length() > 1: up2.text = b2
+		startRound()
+	checkPlacement()
 	
-func hideAllRangeShapes():
+func checkPlacement():
+	if Input.is_action_just_pressed("q"):
+		if !placing:
+			placing = true
+			$TileMap.add_child(preload("res://scenes/dart.tscn").instantiate())	
+	
+func startRound():
+	if path.get_child_count() < 1:
+		ui.get_node("tower_tab/startKnapp/Button").text = "Round Active"
+		round_summon()
+		
+func changeButtonText(b1,b2,desc):
+	if b1.length() > 0: up1.text = b1
+	if b2.length() > 0: up2.text = b2
+	if desc.length() > 0: infoSlot.text = desc
+	
+func hideAllRangeShapes(monkey):
 	var allNodes = get_node("TileMap").get_children()
 	var arr = []
 	for child in allNodes:
 		if child.is_in_group("towers"):
 			arr.push_front(child)
-	print(arr)
 	if arr.size() > 0:
 		for node in arr:
 			node.clicked = false
-			node.get_node("rangeCol").get_node("rangeMesh").modulate.a = 0	
+	if !monkey == null:
+		monkey.clicked = true
+	
+func initUpgrade(side):
+	if selectedUpgrade.monkey == null: return
+	var monkey = selectedUpgrade.monkey
+	if side == "L":
+		monkey.testUpgrade(selectedUpgrade.upgrades[0])
+	elif side == "R":
+		monkey.testUpgrade(selectedUpgrade.upgrades[1])
 	
 func focusMonkey(monkey, upgrades):
-	hideAllRangeShapes()
-	print(monkey)
-	print(upgrades)	
+	#print("focusing monkey: ");print(monkey);print(upgrades)
+	hideAllRangeShapes(monkey)
+	var lUpgrade = "l1"
+	if upgrades.l1.activated: lUpgrade = "l2"
+	var rUpgrade = "r1"
+	if upgrades.r1.activated: rUpgrade = "r2"
+	selectedUpgrade.monkey = monkey
+	selectedUpgrade.upgrades = [lUpgrade,rUpgrade]
+	changeButtonText(upgrades[lUpgrade].name,upgrades[rUpgrade].name,upgrades.Description)
 	
 func round_summon():
 	if roundReady:
+		$TileMap/Node2D/Spawn_CD.wait_time = waitTime
+		waitTime = waitTime*0.9
 		roundReady = false
 		current_wave = -1
 		current_round += 1
@@ -75,6 +126,8 @@ func wave_summon():
 		wave_summon()
 	else:
 		roundReady = true
+		get_node('UI').roundActive = false
+		ui.get_node("tower_tab/startKnapp/Button").text = "Start round"
 	
 
 func spawn_ballon(frames, speed, damage, type, newBalloon):
