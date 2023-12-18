@@ -1235,6 +1235,7 @@ size = Vector2(51, 60)
 script = ExtResource("1_6xjlr")
 
 [node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
 position = Vector2(-1, 0)
 scale = Vector2(1.78775, 1.89221)
 tile_set = SubResource("TileSet_p01kb")
