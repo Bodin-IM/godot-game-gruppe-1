@@ -23,9 +23,9 @@ var mainMap
 var mouseInside = true
 
 var upgrades = {
-	"Description":"The Dart monkey is a cheap tower which is good for early game, but with its slow projectiles it doesnt perform well with higher level balloons...",
-	"l1":{"name":"Range Increase","amount":15,"activated":false}, #range
-	"l2":{"name":"More Range","amount":30,"activated":false}, #range
+	"Description":"the tackshooter is a small tower capable of taking out multiple targets at once",
+	"l1":{"name":"Range Increase","amount":5,"activated":false}, #range
+	"l2":{"name":"More Range","amount":10,"activated":false}, #range
 	"r1":{"name":"Faster Shots","amount":30,"activated":false}, #projectile speed
 	"r2":{"name":"FASTER","amount":50,"activated":false}, #projectile speed
 }
@@ -170,12 +170,13 @@ func start_attack():
 		else:attackCooldown.stop();cooldownOff=true
 
 func attack():
-	var dart = preload("res://scenes/dart_projectile.tscn")
-	var instance = dart.instantiate()
-	instance.speed = projSpeed
-	self.add_child(instance)
-	#print(get_children())
-
+	var tack = preload("res://scenes/tack_projectile.tscn")
+	var degs = 0
+	for i in range(8):
+		var instance = tack.instantiate()
+		degs = degs + 360/8
+		instance.rotationdegrees = degs
+		self.add_child(tack)
 
 func _on_attack_cooldown_timeout():
 	start_attack()
