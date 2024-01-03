@@ -1,16 +1,12 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://ctsegsm0cp68i"]
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://ctsegsm0cp68i"]
 
 [ext_resource type="Texture2D" uid="uid://dxmbwwayqmjlj" path="res://Assets/red_bln.png" id="1_wdldo"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_813wh"]
-atlas = ExtResource("1_wdldo")
-region = Rect2(0, 0, 96, 127)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_813wh")
+"texture": ExtResource("1_wdldo")
 }],
 "loop": true,
 "name": &"default",

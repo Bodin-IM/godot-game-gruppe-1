@@ -8,6 +8,7 @@ var path_follow
 var progress = 0
 var balloonType = ""
 var mainMap
+var next_bln
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
@@ -17,16 +18,16 @@ func _ready():
 	path_follow.set_rotates(false)
 	path_follow.set_loop(false)
 
-func set_values(frames, set_speed, set_damage, type):
+func set_values(frames, set_speed, set_damage, type, next_type):
 	$AnimatedSprite2D.sprite_frames = frames
 	speed = set_speed
 	damage = set_damage
 	balloonType = type
+	next_bln = next_type
 
 func _physics_process(delta):
 	path_follow.set_progress(path_follow.get_progress() + speed + delta)
 	progress = progress + speed
-	#print(balloonType)
 	
 	if path_follow.progress_ratio == 1.0:
 		temp_global_life -= 1
@@ -37,8 +38,8 @@ func _physics_process(delta):
 func balloonHit():
 	if balloonType == "red":
 		removeSelf()
-	elif balloonType == "blue":
-		mainMap.newBalloon("red", get_parent().progress)
+	else:
+		mainMap.newBalloon(next_bln, get_parent().progress)
 		removeSelf()
 
 func removeSelf():

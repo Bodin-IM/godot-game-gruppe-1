@@ -117,8 +117,10 @@ func wave_summon():
 	var speed = wave.type.speed
 	var dmg = wave.type.dmg
 	var type = wave.type.type
+	var next_type = wave.type.next_type
+	var frame = wave.type.frames
 	for i in range(wave.amount):
-		spawn_ballon(wave.type.frames, speed, dmg, type, false)
+		spawn_ballon(frame, speed, dmg, type, next_type, false)
 		spawnTimer.start()
 		await(spawnTimer.timeout)
 	if path.rounds[current_round].size() > current_wave + 1:
@@ -130,10 +132,10 @@ func wave_summon():
 		ui.get_node("tower_tab/startKnapp/Button").text = "Start round"
 	
 
-func spawn_ballon(frames, speed, damage, type, newBalloon):
+func spawn_ballon(frames, speed, damage, type, next_type, newBalloon):
 		print("spawned")
 		var instance = bloon_scene.instantiate()
-		instance.set_values(frames, speed, damage, type)
+		instance.set_values(frames, speed, damage, type, next_type)
 		instance.scale = Vector2(0.2,0.2)
 		var path_follow_new = PathFollow2D.new()
 		if newBalloon: path_follow_new.progress = testProg
@@ -146,5 +148,5 @@ func newBalloon(type, pos):
 	testProg = pos
 	balloons = path.balloons
 	if type == "red":
-		spawn_ballon(balloons.red.frames, balloons.red.speed, balloons.red.dmg, type, true)
+		spawn_ballon(balloons.red.frames, balloons.red.speed, balloons.red.dmg, type, false, true)
 	
