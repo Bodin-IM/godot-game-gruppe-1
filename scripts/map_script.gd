@@ -108,7 +108,7 @@ func round_summon():
 		pathRoot.get_node("Spawn_CD").wait_time = waitTime
 		waitTime = waitTime*0.9
 		roundReady = false
-		current_wave = -1
+		current_wave = 0
 		current_round += 1
 		wave_summon()
 		
@@ -117,8 +117,9 @@ func wave_summon():
 	var speed = wave.type.speed
 	var dmg = wave.type.dmg
 	var type = wave.type.type
-	var next_type = wave.type.next_type
 	var frame = wave.type.frames
+	var next_type = wave.type.next_type
+	
 	for i in range(wave.amount):
 		spawn_ballon(frame, speed, dmg, type, next_type, false)
 		spawnTimer.start()
@@ -144,9 +145,8 @@ func spawn_ballon(frames, speed, damage, type, next_type, newBalloon):
 		path.add_child(path_follow_new)
 		path_follow_new.add_child(instance)
 		
-func newBalloon(type, pos):
+func newBalloon(next_bln, pos):
 	testProg = pos
 	balloons = path.balloons
-	if type == "red":
-		spawn_ballon(balloons.red.frames, balloons.red.speed, balloons.red.dmg, type, false, true)
-	
+	print(next_bln)
+	spawn_ballon(balloons[next_bln].frames, balloons[next_bln].speed, balloons[next_bln].dmg, next_bln, balloons[next_bln].next_type, true)

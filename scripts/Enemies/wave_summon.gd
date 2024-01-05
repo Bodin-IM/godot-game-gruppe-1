@@ -6,36 +6,36 @@ var balloons
 func _ready():
 	balloons = {
 		"red":{
-			"speed":2,
+			"speed":1,
 			"dmg":1,
 			"frames":preload("res://Assets/bloon_sprite_frames/red_sprite_frames.tres"),
 			"type":"red",
 			"next_type":""
 		},
 		"blue":{
-			"speed":1,
+			"speed":2,
 			"dmg":2,
 			"frames":preload("res://Assets/bloon_sprite_frames/blue_sprite_frames.tres"),
 			"type":"blue",
 			"next_type":"red"
 		},
 		"green":{
-			"speed":1,
-			"dmg":1,
+			"speed":3,
+			"dmg":4,
 			"frames":preload("res://Assets/bloon_sprite_frames/green_sprite_frames.tres"),
 			"type":"green",
 			"next_type":"blue"
 		},
 		"yellow":{
-			"speed":1,
-			"dmg":1,
+			"speed":4,
+			"dmg":8,
 			"frames":preload("res://Assets/bloon_sprite_frames/yellow_sprite_frames.tres"),
 			"type":"yellow",
 			"next_type":"green"
 		},
 		"pink":{
-			"speed":1,
-			"dmg":1,
+			"speed":5,
+			"dmg":16,
 			"frames":preload("res://Assets/bloon_sprite_frames/pink_sprite_frames.tres"),
 			"type":"pink",
 			"next_type":"yellow"

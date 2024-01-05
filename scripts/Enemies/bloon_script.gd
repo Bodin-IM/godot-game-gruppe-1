@@ -17,6 +17,7 @@ func _ready():
 	anim = $AnimatedSprite2D
 	path_follow.set_rotates(false)
 	path_follow.set_loop(false)
+	#print(next_bln)
 
 func set_values(frames, set_speed, set_damage, type, next_type):
 	$AnimatedSprite2D.sprite_frames = frames
