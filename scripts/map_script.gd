@@ -60,7 +60,11 @@ func checkPlacement():
 	if Input.is_action_just_pressed("q"):
 		if !placing:
 			placing = true
-			$TileMap.add_child(preload("res://scenes/dart.tscn").instantiate())	
+			var towersc = preload("res://scenes/tower.tscn")
+			var instance = towersc.instantiate()
+			var script = ResourceLoader.load("res://scripts/towers/dart/dart_script.gd")
+			instance.set_script(script)
+			$TileMap.add_child(instance)
 	
 func startRound():
 	if path.get_child_count() < 1:
