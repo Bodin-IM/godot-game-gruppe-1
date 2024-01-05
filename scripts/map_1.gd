@@ -19,6 +19,10 @@ var up1
 var up2
 
 func _ready():
+	
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), Settings.volume_level)
+	#$AudioStreamPlayer2D.volume_db = Settings.volume_level
+	print(Settings.volume_level)
 	path = get_node("TileMap/path/Path2D")
 	ui = get_node("UI/Control")
 	up1 = ui.get_node("Upgrade_tab/HBoxContainer/knappL/Button")
