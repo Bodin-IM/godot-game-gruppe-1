@@ -80,7 +80,7 @@ func _ready():
 	{"type":balloons.black, "amount":1}, 
 	{"type":balloons.white, "amount":1},
 	{"type":balloons.zebra, "amount":1},
-	{"type":balloons.rainbow, "amount":1},
+	{"type":balloons.rainbow, "amount":7},
 	],
 	[
 	{"type":balloons.red, "amount":3}, 
