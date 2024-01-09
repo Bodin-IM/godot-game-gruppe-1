@@ -221,7 +221,31 @@ func _ready():
 	[
 	{"type":balloons.black, "amount":25}, 
 	{"type":balloons.white, "amount":28}, 
-	],
+	], 
+	#Round 30
+	[
+	{"type":balloons.yellow, "amount":140}, 
+	{"type":balloons.zebra, "amount":5}, 
+	], 
+	#Round 30
+	[
+	{"type":balloons.pink, "amount":35}, 
+	{"type":balloons.white, "amount":25}, 
+	{"type":balloons.rainbow, "amount":5}, 
+	], 
+	#Round 30
+	[
+	{"type":balloons.pink, "amount":81}, 
+	], 
+	#Round 30
+	[
+	{"type":balloons.red, "amount":300},
+	{"type":balloons.pink, "amount":50},
+	{"type":balloons.black, "amount":20}, 
+	{"type":balloons.white, "amount":27}, 
+	{"type":balloons.zebra, "amount":10},
+	{"type":balloons.rainbow, "amount":8},
+	], 
 	]
 
 
