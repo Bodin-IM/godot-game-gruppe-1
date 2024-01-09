@@ -71,30 +71,156 @@ func _ready():
 	}
 	#Zebra img needs fixing later image on laptop pxlr
 	rounds = [
+	#Round 1
 	[
-	{"type":balloons.red, "amount":1}, 
-	{"type":balloons.blue, "amount":1},
-	{"type":balloons.green, "amount":1}, 
-	{"type":balloons.yellow, "amount":1}, 
-	{"type":balloons.pink, "amount":1},
-	{"type":balloons.black, "amount":1}, 
-	{"type":balloons.white, "amount":1},
-	{"type":balloons.zebra, "amount":1},
-	{"type":balloons.rainbow, "amount":7},
+	{"type":balloons.red, "amount":20}, 
 	],
+	#Round 2
 	[
-	{"type":balloons.red, "amount":3}, 
-	{"type":balloons.blue, "amount":8},
-	{"type":balloons.red, "amount":6}, 
-	{"type":balloons.blue, "amount":3}, 
-	{"type":balloons.red, "amount":2}, 
+	{"type":balloons.red, "amount":30},
 	],
+	#Round 3
 	[
-	{"type":balloons.red, "amount":3}, 
-	{"type":balloons.blue, "amount":8},
-	{"type":balloons.red, "amount":6}, 
-	{"type":balloons.blue, "amount":3}, 
-	{"type":balloons.red, "amount":2}, 
+	{"type":balloons.red, "amount":20}, 
+	{"type":balloons.blue, "amount":5},
+	],
+	#Round 4
+	[
+	{"type":balloons.red, "amount":30}, 
+	{"type":balloons.blue, "amount":15},
+	],
+	#Round 5
+	[
+	{"type":balloons.red, "amount":5}, 
+	{"type":balloons.blue, "amount":25},
+	],
+	#Round 6
+	[
+	{"type":balloons.red, "amount":15}, 
+	{"type":balloons.blue, "amount":15},
+	{"type":balloons.green, "amount":4},
+	],
+	#Round 7
+	[
+	{"type":balloons.red, "amount":20}, 
+	{"type":balloons.blue, "amount":25},
+	{"type":balloons.green, "amount":5},
+	],
+	#Round 8
+	[
+	{"type":balloons.red, "amount":10}, 
+	{"type":balloons.blue, "amount":20},
+	{"type":balloons.green, "amount":5},
+	], 
+	#Round 9
+	[
+	{"type":balloons.red, "amount":10}, 
+	{"type":balloons.blue, "amount":20},
+	{"type":balloons.green, "amount":14},
+	], 
+	#Round 10
+	[
+	{"type":balloons.green, "amount":30},
+	], 
+	#Round 11
+	[
+	{"type":balloons.blue, "amount":102},
+	], 
+	#Round 12
+	[
+	{"type":balloons.red, "amount":10}, 
+	{"type":balloons.blue, "amount":10},
+	{"type":balloons.green, "amount":12},
+	{"type":balloons.yellow, "amount":2},
+	], 
+	#Round 13
+	[
+	{"type":balloons.blue, "amount":15}, 
+	{"type":balloons.green, "amount":10},
+	{"type":balloons.yellow, "amount":5},
+	], 
+	#Round 14
+	[
+	{"type":balloons.red, "amount":100}, 
+	{"type":balloons.green, "amount":23},
+	{"type":balloons.yellow, "amount":4},
+	], 
+	#Round 15
+	[
+	{"type":balloons.red, "amount":50}, 
+	{"type":balloons.blue, "amount":15},
+	{"type":balloons.green, "amount":10},
+	{"type":balloons.yellow, "amount":9},
+	], 
+	#Round 16
+	[
+	{"type":balloons.red, "amount":20}, 
+	{"type":balloons.green, "amount":12},
+	{"type":balloons.yellow, "amount":5},
+	{"type":balloons.pink, "amount":3},
+	], 
+	#Round 17
+	[
+	{"type":balloons.green, "amount":20}, 
+	{"type":balloons.yellow, "amount":8},
+	{"type":balloons.pink, "amount":4},
+	], 
+	#Round 18
+	[
+	{"type":balloons.yellow, "amount":25}, 
+	], 
+	#Round 19
+	[
+	{"type":balloons.green, "amount":80}, 
+	], 
+	#Round 20
+	[
+	{"type":balloons.green, "amount":10}, 
+	{"type":balloons.yellow, "amount":9}, 
+	{"type":balloons.pink, "amount":7}, 
+	], 
+	#Round 21
+	[
+	{"type":balloons.black, "amount":6}, 
+	],  
+	#Round 22
+	[
+	{"type":balloons.pink, "amount":14}, 
+	], 
+	#Round 23
+	[
+	{"type":balloons.white, "amount":8}, 
+	], 
+	#Round 24
+	[
+	{"type":balloons.black, "amount":5}, 
+	{"type":balloons.white, "amount":4}, 
+	], 
+	#Round 25
+	[
+	{"type":balloons.pink, "amount":23}, 
+	{"type":balloons.zebra, "amount":4}, 
+	], 
+	#Round 26
+	[
+	{"type":balloons.red, "amount":120}, 
+	{"type":balloons.blue, "amount":55},
+	{"type":balloons.green, "amount":45}, 
+	{"type":balloons.yellow, "amount":45}, 
+	], 
+	#Round 27
+	[
+	{"type":balloons.yellow, "amount":25}, 
+	{"type":balloons.pink, "amount":24}, 
+	], 
+	#Round 28
+	[
+	{"type":balloons.zebra, "amount":12}, 
+	], 
+	#Round 29
+	[
+	{"type":balloons.black, "amount":25}, 
+	{"type":balloons.white, "amount":28}, 
 	],
 	]
 
