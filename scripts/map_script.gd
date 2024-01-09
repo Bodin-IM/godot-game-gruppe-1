@@ -143,7 +143,7 @@ func spawn_ballon(frames, speed, damage, type, next_type, newBalloon):
 		path_follow_new.set_rotates(false)
 		path_follow_new.set_loop(false)
 		path.add_child(path_follow_new)
-		path_follow_new.add_child(instance)
+		path_follow_new.add_child(instance) 
 		
 func newBalloon(next_bln, pos):
 	testProg = pos

@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://cg50i2k6lqm4t"]
+
+[ext_resource type="Texture2D" uid="uid://bkonbjmtkxelm" path="res://Assets/black_bln.png" id="1_6boxd"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6boxd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
