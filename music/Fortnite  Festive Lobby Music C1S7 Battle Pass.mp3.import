@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ppktcj2o0g1f"
+path="res://.godot/imported/Fortnite  Festive Lobby Music C1S7 Battle Pass.mp3-a4982e43ea5cb3b4da09bcc24ccba334.mp3str"
+
+[deps]
+
+source_file="res://music/Fortnite  Festive Lobby Music C1S7 Battle Pass.mp3"
+dest_files=["res://.godot/imported/Fortnite  Festive Lobby Music C1S7 Battle Pass.mp3-a4982e43ea5cb3b4da09bcc24ccba334.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
