@@ -69,7 +69,7 @@ func _ready():
 			"next_type":"zebra"
 		},
 	}
-	
+	#Zebra img needs fixing later image on laptop pxlr
 	rounds = [
 	[
 	{"type":balloons.red, "amount":1}, 

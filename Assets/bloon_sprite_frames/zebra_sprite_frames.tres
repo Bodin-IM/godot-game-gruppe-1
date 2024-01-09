@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://gwyucd5udhu"]
 
-[ext_resource type="Texture2D" uid="uid://dn1tqw7kk4pki" path="res://Assets/Bloons/zebra_bln.png" id="1_ssst5"]
+[ext_resource type="Texture2D" uid="uid://ddpxbporp3teg" path="res://Assets/Bloons/zebra_bln.png" id="1_ssst5"]
 
 [resource]
 animations = [{
