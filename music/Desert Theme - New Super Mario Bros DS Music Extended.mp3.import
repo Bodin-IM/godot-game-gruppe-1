@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://kri20t7oyslb"
+path="res://.godot/imported/Desert Theme - New Super Mario Bros DS Music Extended.mp3-040bd12068fc1e6dc29c6699a8fca870.mp3str"
+
+[deps]
+
+source_file="res://music/Desert Theme - New Super Mario Bros DS Music Extended.mp3"
+dest_files=["res://.godot/imported/Desert Theme - New Super Mario Bros DS Music Extended.mp3-040bd12068fc1e6dc29c6699a8fca870.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

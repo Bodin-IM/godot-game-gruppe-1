@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://t7m8mq30beak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwuf1"]
+size = Vector2(48, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqduy"]
+size = Vector2(48, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tferk"]
+size = Vector2(20, 7)
+
+[node name="hitbox" type="Area2D" groups=["path_hitbox"]]
+position = Vector2(21, 12)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(56, 67.5)
+shape = SubResource("RectangleShape2D_lwuf1")
+one_way_collision_margin = 72.5
+
+[node name="Area2D" type="Area2D" parent="." groups=["path_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(56, 39.5)
+shape = SubResource("RectangleShape2D_oqduy")
+
+[node name="Area2D2" type="Area2D" parent="." groups=["path_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(56, 28.5)
+shape = SubResource("RectangleShape2D_tferk")

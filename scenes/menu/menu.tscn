@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5xp2tu8a6kdx"]
+
+[ext_resource type="Script" path="res://scripts/menu scripts/menu.gd" id="1_cqxv6"]
+[ext_resource type="Texture2D" uid="uid://j7uesiuqytkl" path="res://Forest_Landscape.jpg" id="2_ps1fv"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cqxv6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ForestLandscape" type="Sprite2D" parent="."]
+position = Vector2(576.5, 322.5)
+scale = Vector2(1.85323, 1.60539)
+texture = ExtResource("2_ps1fv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.461
+anchor_right = 0.508
+anchor_bottom = 0.461
+offset_left = -585.216
+offset_top = -298.728
+offset_right = 585.784
+offset_bottom = 344.272
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Dart Defender"
+
+[node name="play" type="Button" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "play"
+
+[node name="quit" type="Button" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "quit
+"
+
+[node name="options" type="Button" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "settings
+"
+
+[node name="Tutorial" type="Button" parent="."]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 282.0
+offset_right = 519.0
+offset_bottom = 385.0
+text = "Tutorial"
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
