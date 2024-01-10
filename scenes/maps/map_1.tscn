@@ -15,11 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://bpyfovep1l2w1" path="res://tilemap assets/Banner_1.png" id="9_vvdax"]
 [ext_resource type="Texture2D" uid="uid://dxjxfof0k5ih6" path="res://tilemap assets/Islands v0.2/terrain.png" id="10_ec2en"]
 [ext_resource type="PackedScene" uid="uid://bequax7o27icx" path="res://scenes/hitboxes/path_hitbox.tscn" id="13_ufuen"]
-[ext_resource type="PackedScene" uid="uid://b64ahqcgprwjx" path="res://scenes/dart.tscn" id="16_3b3nd"]
 [ext_resource type="PackedScene" uid="uid://du087cke5sqtj" path="res://scenes/hitboxes/prop_hitbox.tscn" id="16_aungn"]
 [ext_resource type="PackedScene" uid="uid://duaxdv8ow2xyj" path="res://scenes/hitboxes/bush_hitbox.tscn" id="17_dald3"]
 [ext_resource type="AudioStream" uid="uid://c0g8def6wamy6" path="res://music/map_1_music.mp3.mp3" id="17_jpk64"]
 [ext_resource type="PackedScene" uid="uid://mmcjvhcrodf5" path="res://scenes/hitboxes/smallbush_hitbox.tscn" id="18_jgcqo"]
+[ext_resource type="Script" path="res://scripts/Enemies/wave_summon.gd" id="19_e44g0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qd751"]
 texture = ExtResource("1_1opco")
@@ -5612,7 +5612,7 @@ position = Vector2(-8.47458, 19.774)
 position = Vector2(12.3864, -21.574)
 scale = Vector2(0.975282, 1.01095)
 curve = SubResource("Curve2D_q2w7t")
-script = ExtResource("19_hne55")
+script = ExtResource("19_e44g0")
 
 [node name="Spawn_CD" type="Timer" parent="TileMap/path"]
 

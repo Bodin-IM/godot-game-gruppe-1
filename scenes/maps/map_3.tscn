@@ -1,11 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://dwh5u8x23a0wa"]
+[gd_scene load_steps=37 format=3 uid="uid://dwh5u8x23a0wa"]
 
+[ext_resource type="Script" path="res://scripts/map_script.gd" id="1_m43xt"]
 [ext_resource type="Texture2D" uid="uid://dxjxfof0k5ih6" path="res://tilemap assets/Islands v0.2/terrain.png" id="1_p5k08"]
 [ext_resource type="Texture2D" uid="uid://ccryp2aoof63f" path="res://tilemap assets/Islands v0.2/Nature.png" id="2_nlpox"]
 [ext_resource type="Texture2D" uid="uid://c4qtax7tyq2um" path="res://tilemap assets/Islands v0.2/buildings.png" id="3_s7x6x"]
 [ext_resource type="PackedScene" uid="uid://du087cke5sqtj" path="res://scenes/hitboxes/prop_hitbox.tscn" id="4_51sup"]
 [ext_resource type="PackedScene" uid="uid://bh2joby61o72h" path="res://scenes/ui.tscn" id="4_ohs15"]
-[ext_resource type="PackedScene" uid="uid://b64ahqcgprwjx" path="res://scenes/dart.tscn" id="5_2b3fk"]
+[ext_resource type="Script" path="res://scripts/Enemies/wave_summon.gd" id="5_pf3ki"]
 [ext_resource type="PackedScene" uid="uid://t7m8mq30beak" path="res://scenes/hitboxes/desert_house_hbx.tscn" id="5_wi2ys"]
 [ext_resource type="AudioStream" uid="uid://kri20t7oyslb" path="res://music/Desert Theme - New Super Mario Bros DS Music Extended.mp3" id="6_8lwl0"]
 
@@ -870,6 +871,7 @@ size = Vector2(4.51975, 10.1695)
 z_as_relative = false
 y_sort_enabled = true
 scale = Vector2(1.77, 1.77)
+script = ExtResource("1_m43xt")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 1
@@ -895,6 +897,7 @@ layer_3/tile_data = PackedInt32Array()
 [node name="Path2D" type="Path2D" parent="TileMap/path"]
 z_index = 5
 curve = SubResource("Curve2D_wpbju")
+script = ExtResource("5_pf3ki")
 
 [node name="Spawn_CD" type="Timer" parent="TileMap/path"]
 
@@ -1165,12 +1168,6 @@ position = Vector2(40.113, 103.39)
 shape = SubResource("RectangleShape2D_0kdv5")
 
 [node name="UI" parent="." instance=ExtResource("4_ohs15")]
-
-[node name="dart_monkey" parent="." instance=ExtResource("5_2b3fk")]
-z_index = 1
-z_as_relative = false
-position = Vector2(-359.223, -731.118)
-scale = Vector2(0.248, 0.248)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_8lwl0")

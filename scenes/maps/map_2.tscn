@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://u5d7uvn8neht"]
+[gd_scene load_steps=33 format=3 uid="uid://u5d7uvn8neht"]
 
-[ext_resource type="Script" path="res://scripts/map_1.gd" id="1_uwdqu"]
+[ext_resource type="Script" path="res://scripts/map_script.gd" id="1_uwdqu"]
 [ext_resource type="Texture2D" uid="uid://dxjxfof0k5ih6" path="res://tilemap assets/Islands v0.2/terrain.png" id="2_kg5nc"]
 [ext_resource type="Texture2D" uid="uid://560kfxbtq72t" path="res://tilemap assets/Islands v0.2/Water.png" id="3_64hns"]
 [ext_resource type="Texture2D" uid="uid://ccryp2aoof63f" path="res://tilemap assets/Islands v0.2/Nature.png" id="4_ptgpg"]
 [ext_resource type="Texture2D" uid="uid://c4qtax7tyq2um" path="res://tilemap assets/Islands v0.2/buildings.png" id="5_ehhoq"]
+[ext_resource type="Script" path="res://scripts/Enemies/wave_summon.gd" id="6_imqva"]
 [ext_resource type="PackedScene" uid="uid://jpnmqwew3pn8" path="res://scenes/hitboxes/path_2_hitbox.tscn" id="6_klld3"]
 [ext_resource type="PackedScene" uid="uid://mv2j2cab3qon" path="res://scenes/hitboxes/prop_hitbox_2.tscn" id="7_ab06d"]
 [ext_resource type="PackedScene" uid="uid://b64ahqcgprwjx" path="res://scenes/dart.tscn" id="8_t4xlp"]
@@ -3494,6 +3495,7 @@ scale = Vector2(0.564972, 0.564972)
 
 [node name="Path2D" type="Path2D" parent="TileMap/path"]
 curve = SubResource("Curve2D_wpvf1")
+script = ExtResource("6_imqva")
 
 [node name="path hitboxes" type="Node2D" parent="TileMap/path"]
 position = Vector2(453, 48)
