@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://oarl4gd5vjm1"]
+
+[ext_resource type="Texture2D" uid="uid://j7uesiuqytkl" path="res://Forest_Landscape.jpg" id="1_hq0qo"]
+[ext_resource type="Script" path="res://scripts/menu scripts/tutorial.gd" id="1_qmxmi"]
+[ext_resource type="Texture2D" uid="uid://2b1ofpdr6tls" path="res://tilemap assets/placement.png" id="2_p6igx"]
+[ext_resource type="Texture2D" uid="uid://c4kt2gj0om487" path="res://tilemap assets/ballons.png" id="3_eywae"]
+[ext_resource type="Texture2D" uid="uid://dd6oj5t0gcgrk" path="res://tilemap assets/start round.png" id="4_ap533"]
+[ext_resource type="Texture2D" uid="uid://cas54idxuw2tt" path="res://tilemap assets/upgrade.png" id="6_psw17"]
+
+[node name="tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qmxmi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 646.0
+texture = ExtResource("1_hq0qo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 644.0
+scale = Vector2(0.999564, 0.94407)
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="placement" type="Label" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "To Place a monkey you must
+Selecet the monkey you want to place
+then click to place 
+when the circle turns red means you can not place
+if the circle is grey means you can place
+
+"
+
+[node name="start round" type="Label" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "to start the round press start round in the bottom right corner
+and the ballons will come out 
+
+
+"
+
+[node name="upgrade" type="Label" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "to upgrade a monkey
+you must press the monkey you want to upgrade
+then in the bottom of the screen are the upgrade selections
+"
+
+[node name="Button" type="Button" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "back to menu"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.517
+anchor_top = 0.276
+anchor_right = 0.517
+anchor_bottom = 0.276
+offset_left = -119.584
+offset_top = -162.848
+offset_right = 52.416
+offset_bottom = -84.848
+scale = Vector2(1, 1.25233)
+text = "Tutorial
+
+How to Play
+"
+
+[node name="Placement" type="Sprite2D" parent="."]
+position = Vector2(224, 186)
+texture = ExtResource("2_p6igx")
+
+[node name="Ballons" type="Sprite2D" parent="."]
+position = Vector2(280, 313.5)
+scale = Vector2(0.706667, 0.486667)
+texture = ExtResource("3_eywae")
+
+[node name="StartRound" type="Sprite2D" parent="."]
+position = Vector2(174, 314.25)
+scale = Vector2(0.706667, 0.6125)
+texture = ExtResource("4_ap533")
+
+[node name="Upgrade" type="Sprite2D" parent="."]
+position = Vector2(241, 409)
+texture = ExtResource("6_psw17")
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

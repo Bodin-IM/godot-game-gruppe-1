@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnjm2j0ccok2k"]
+
+[ext_resource type="Script" path="res://scripts/menu scripts/menuscript.gd" id="1_xkysu"]
+[ext_resource type="Texture2D" uid="uid://j7uesiuqytkl" path="res://Forest_Landscape.jpg" id="2_rwi43"]
+[ext_resource type="AudioStream" uid="uid://c0g8def6wamy6" path="res://music/map_1_music.mp3.mp3" id="3_4jwbk"]
+[ext_resource type="Texture2D" uid="uid://bfwpexvxw6xsb" path="res://scenes/menu/th-removebg-preview (1).png" id="4_k5blb"]
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xkysu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 645.0
+texture = ExtResource("2_rwi43")
+
+[node name="HSlider" type="HSlider" parent="TextureRect"]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 311.0
+offset_right = 561.0
+offset_bottom = 357.0
+min_value = -50.0
+max_value = 24.0
+
+[node name="back" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 273.0
+offset_right = 558.0
+offset_bottom = 304.0
+text = "back to menu
+"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4jwbk")
+autoplay = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 316.0
+offset_right = 446.0
+offset_bottom = 356.0
+texture = ExtResource("4_k5blb")
+
+[connection signal="value_changed" from="TextureRect/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="TextureRect/back" to="." method="_on_back_pressed"]

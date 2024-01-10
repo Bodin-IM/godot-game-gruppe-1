@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://csvc3kf66oddg"]
+
+[ext_resource type="Script" path="res://scripts/menu scripts/map_menu.gd" id="1_8m4co"]
+[ext_resource type="Texture2D" uid="uid://j7uesiuqytkl" path="res://Forest_Landscape.jpg" id="2_c617m"]
+[ext_resource type="Texture2D" uid="uid://cuvjfeexuqba5" path="res://tilemap assets/map_1picture.png" id="3_82rwq"]
+[ext_resource type="Texture2D" uid="uid://dkkgaelwypgbj" path="res://tilemap assets/map_2.png" id="4_x6lgc"]
+[ext_resource type="Texture2D" uid="uid://geyhmbgtpi05" path="res://map_3.png" id="5_anyme"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8m4co")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1163.0
+offset_bottom = 646.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_c617m")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -89.0
+offset_right = 19.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Dart Defener
+"
+
+[node name="map_1" type="Button" parent="CanvasLayer/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Harmony Hills"
+icon = ExtResource("3_82rwq")
+
+[node name="map_2" type="Button" parent="CanvasLayer/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Arctic Abyss
+"
+icon = ExtResource("4_x6lgc")
+
+[node name="map_3" type="Button" parent="CanvasLayer/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sahara Stronghold
+"
+icon = ExtResource("5_anyme")
+
+[node name="back" type="Button" parent="CanvasLayer/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back To Main Menu
+"
+
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/map_1" to="." method="_on_map_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/map_2" to="." method="_on_map_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/map_3" to="." method="_on_map_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/back" to="." method="_on_back_pressed"]

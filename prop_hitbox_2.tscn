@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://mv2j2cab3qon"]
-
-[node name="prop hitbox 2" type="Area2D" groups=["path hitbox"]]
-
-[node name="prop hitbox 2" type="CollisionShape2D" parent="."]
