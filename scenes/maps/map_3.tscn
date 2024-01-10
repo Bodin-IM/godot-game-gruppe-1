@@ -646,6 +646,7 @@ texture = ExtResource("3_s7x6x")
 5:8/0 = 0
 7:8/0 = 0
 8:8/0 = 0
+8:8/0/y_sort_origin = -5
 9:8/0 = 0
 10:8/0 = 0
 11:8/0 = 0
@@ -671,6 +672,7 @@ texture = ExtResource("3_s7x6x")
 4:9/0 = 0
 7:9/0 = 0
 8:9/0 = 0
+8:9/0/y_sort_origin = -5
 9:9/0 = 0
 10:9/0 = 0
 11:9/0 = 0
@@ -856,13 +858,13 @@ size = Vector2(47.5565, 55.3672)
 size = Vector2(7.34463, 5.64972)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc6p5"]
-size = Vector2(33.3333, 25.9887)
+size = Vector2(24.8588, 18.6441)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs5ep"]
-size = Vector2(14.6893, 18.6441)
+size = Vector2(8.47458, 14.1243)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kdv5"]
-size = Vector2(15.8192, 15.2542)
+size = Vector2(4.51975, 10.1695)
 
 [node name="map3" type="Node2D"]
 z_as_relative = false
@@ -1027,7 +1029,7 @@ position = Vector2(38.9831, 246.893)
 
 [node name="CollisionShape2D" parent="TileMap/hitboxes/prop hitbox" index="0"]
 z_index = 5
-position = Vector2(1.12994, 1.69493)
+position = Vector2(1.69486, -0.000338554)
 
 [node name="prop hitbox2" parent="TileMap/hitboxes" instance=ExtResource("4_51sup")]
 position = Vector2(38.9831, 246.893)
@@ -1041,7 +1043,7 @@ position = Vector2(38.9831, 246.893)
 
 [node name="CollisionShape2D" parent="TileMap/hitboxes/prop hitbox3" index="0"]
 z_index = 5
-position = Vector2(466.102, 18.0791)
+position = Vector2(465.537, 15.8189)
 
 [node name="hitbox" parent="TileMap/hitboxes" instance=ExtResource("5_wi2ys")]
 z_index = 6
@@ -1124,14 +1126,14 @@ shape = SubResource("RectangleShape2D_trmvw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/hitboxes/large stone"]
 z_index = 5
-position = Vector2(230.791, 54.8023)
+position = Vector2(229.943, 55.0847)
 shape = SubResource("RectangleShape2D_cc6p5")
 
 [node name="graveyard" type="Area2D" parent="TileMap/hitboxes" groups=["path_hitbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/hitboxes/graveyard"]
 z_index = 5
-position = Vector2(200, 42.6554)
+position = Vector2(199.718, 44.9153)
 shape = SubResource("RectangleShape2D_hs5ep")
 
 [node name="small cactus" type="Area2D" parent="TileMap/hitboxes" groups=["path_hitbox"]]
@@ -1152,7 +1154,7 @@ shape = SubResource("RectangleShape2D_0kdv5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/hitboxes/small cactus3"]
 z_index = 5
-position = Vector2(215.819, 23.7288)
+position = Vector2(215.819, 24.2938)
 shape = SubResource("RectangleShape2D_0kdv5")
 
 [node name="small cactus4" type="Area2D" parent="TileMap/hitboxes" groups=["path_hitbox"]]
