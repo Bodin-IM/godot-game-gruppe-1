@@ -139,6 +139,7 @@ text = "Upgrade 2"
 [node name="healthlabel" type="Label" parent="."]
 offset_right = 68.0
 offset_bottom = 37.0
+text = "asdsd"
 label_settings = SubResource("LabelSettings_pxdmv")
 
 [node name="Label" type="Label" parent="."]
@@ -150,6 +151,11 @@ offset_bottom = 578.0
 text = "Current Round: 0"
 label_settings = SubResource("LabelSettings_475tx")
 horizontal_alignment = 1
+
+[node name="money" type="Label" parent="."]
+offset_top = 31.0
+offset_right = 54.0
+offset_bottom = 55.0
 
 [connection signal="pressed" from="Control/tower_tab/startKnapp/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="button_down" from="Control/tower_tab/startKnapp/Button" to="." method="_on_button_button_down"]

@@ -46,8 +46,6 @@ func _ready():
 	#meshNode.scale = Vector2(20,20)
 
 func _process(_delta):
-	print(clicked)
-	print(meshNode.modulate)
 	if placed:
 		if clicked:meshNode.modulate.a = 0.2; mainMap.selectedMonkey = self
 		else:meshNode.modulate.a = 0

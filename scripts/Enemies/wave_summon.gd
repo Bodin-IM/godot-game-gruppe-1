@@ -8,6 +8,7 @@ func _ready():
 		"red":{
 			"speed":1,
 			"dmg":1,
+			"moneyRewarded":1,
 			"frames":preload("res://Assets/bloon_sprite_frames/red_sprite_frames.tres"),
 			"type":"red",
 			"next_type":""
@@ -15,6 +16,7 @@ func _ready():
 		"blue":{
 			"speed":1.4,
 			"dmg":2,
+			"moneyRewarded":2,
 			"frames":preload("res://Assets/bloon_sprite_frames/blue_sprite_frames.tres"),
 			"type":"blue",
 			"next_type":"red"
@@ -22,6 +24,7 @@ func _ready():
 		"green":{
 			"speed":1.8,
 			"dmg":3,
+			"moneyRewarded":3,
 			"frames":preload("res://Assets/bloon_sprite_frames/green_sprite_frames.tres"),
 			"type":"green",
 			"next_type":"blue"
@@ -29,6 +32,7 @@ func _ready():
 		"yellow":{
 			"speed":3.2,
 			"dmg":4,
+			"moneyRewarded":4,
 			"frames":preload("res://Assets/bloon_sprite_frames/yellow_sprite_frames.tres"),
 			"type":"yellow",
 			"next_type":"green"
@@ -36,6 +40,7 @@ func _ready():
 		"pink":{
 			"speed":3.5,
 			"dmg":5,
+			"moneyRewarded":5,
 			"frames":preload("res://Assets/bloon_sprite_frames/pink_sprite_frames.tres"),
 			"type":"pink",
 			"next_type":"yellow"
@@ -43,6 +48,7 @@ func _ready():
 		"black":{
 			"speed":1.8,
 			"dmg":11,
+			"moneyRewarded":11,
 			"frames":preload("res://Assets/bloon_sprite_frames/black_sprite_frames.tres"),
 			"type":"black",
 			"next_type":"pink"
@@ -50,6 +56,7 @@ func _ready():
 		"white":{
 			"speed":2,
 			"dmg":11,
+			"moneyRewarded":12,
 			"frames":preload("res://Assets/bloon_sprite_frames/white_sprite_frames.tres"),
 			"type":"white",
 			"next_type":"pink"
@@ -57,6 +64,7 @@ func _ready():
 		"zebra":{
 			"speed":1.8,
 			"dmg":23,
+			"moneyRewarded":23,
 			"frames":preload("res://Assets/bloon_sprite_frames/zebra_sprite_frames.tres"),
 			"type":"white",
 			"next_type":"white"
@@ -64,6 +72,7 @@ func _ready():
 		"rainbow":{
 			"speed":2.2,
 			"dmg":47,
+			"moneyRewarded":47,
 			"frames":preload("res://Assets/bloon_sprite_frames/rainbow_sprite_frames.tres"),
 			"type":"rainbow",
 			"next_type":"zebra"

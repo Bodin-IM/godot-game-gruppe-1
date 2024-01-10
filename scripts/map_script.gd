@@ -3,6 +3,8 @@ extends Node2D
 var money = 200
 var health = 100
 
+var dartprice = 100
+var tackprice = 200
 var path
 var current_wave = -1
 var waves
@@ -37,6 +39,7 @@ func _ready():
 	infoSlot = ui.get_node("Upgrade_tab/HBoxContainer/HBoxContainer/label/infoLabel")
 
 func _process(_delta):
+	$UI/money.text = str(money)
 	checkHealth()
 	get_node('UI').get_node('healthlabel').text = str(health)
 	print($TileMap/path/Path2D.get_child_count())
@@ -61,9 +64,11 @@ func _process(_delta):
 	if Input.is_action_just_pressed("fKeyPressed"):
 		startRound()
 	if Input.is_action_just_pressed("w"):
-		selectedMonkey='tack';checkPlacement('tack')
+		if money > tackprice-1:
+			money-=tackprice;selectedMonkey='tack';checkPlacement('tack')
 	if Input.is_action_just_pressed("q"):
-		selectedMonkey='dart';checkPlacement('dart')
+		if money > dartprice-1:
+			money-=dartprice;selectedMonkey='dart';checkPlacement('dart')
 		
 func checkPlacement(towerType):
 	if !placing:
@@ -141,9 +146,10 @@ func wave_summon():
 	var type = wave.type.type
 	var frame = wave.type.frames
 	var next_type = wave.type.next_type
+	var moneyrewarded = wave.type.moneyRewarded
 	
 	for i in range(wave.amount):
-		spawn_ballon(frame, speed, dmg, type, next_type, false)
+		spawn_ballon(frame, speed, dmg, type, next_type, false, moneyrewarded)
 		spawnTimer.start()
 		await(spawnTimer.timeout)
 	if path.rounds[current_round].size() > current_wave + 1:
@@ -155,10 +161,10 @@ func wave_summon():
 		ui.get_node("tower_tab/startKnapp/Button").text = "Start round"
 	
 
-func spawn_ballon(frames, speed, damage, type, next_type, newBalloon):
+func spawn_ballon(frames, speed, damage, type, next_type, newBalloon,money1):
 		print("spawned")
 		var instance = bloon_scene.instantiate()
-		instance.set_values(frames, speed, damage, type, next_type)
+		instance.set_values(frames, speed, damage, type, next_type,money1)
 		instance.scale = Vector2(0.2,0.2)
 		var path_follow_new = PathFollow2D.new()
 		if newBalloon: path_follow_new.progress = testProg
@@ -171,4 +177,4 @@ func newBalloon(next_bln, pos):
 	testProg = pos
 	balloons = path.balloons
 	print(next_bln)
-	spawn_ballon(balloons[next_bln].frames, balloons[next_bln].speed, balloons[next_bln].dmg, next_bln, balloons[next_bln].next_type, true)
+	spawn_ballon(balloons[next_bln].frames, balloons[next_bln].speed, balloons[next_bln].dmg, next_bln, balloons[next_bln].next_type, true,balloons[next_bln].moneyRewarded)

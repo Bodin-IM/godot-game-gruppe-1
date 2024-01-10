@@ -7,6 +7,7 @@ var popSound = preload("res://assets/pop.wav")
 var audioplayer
 var cols = 0
 var maxCols = 1
+var main
 
 func _ready():
 	self.z_index = 1
@@ -16,6 +17,7 @@ func _ready():
 	self.get_node("mainProj").rotation_degrees = parRotation
 
 func _process(delta):
+	main = get_tree().get_root().get_child(1)
 	#print(parRotation)
 	var movement_vector = Vector2(1, 0).rotated(deg_to_rad(parRotation))
 	position += movement_vector * speed * delta

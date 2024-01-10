@@ -9,6 +9,7 @@ var progress = 0
 var balloonType = ""
 var mainMap
 var next_bln
+var moneyAmount
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
@@ -19,12 +20,13 @@ func _ready():
 	path_follow.set_loop(false)
 	#print(next_bln)
 
-func set_values(frames, set_speed, set_damage, type, next_type):
+func set_values(frames, set_speed, set_damage, type, next_type,money):
 	$AnimatedSprite2D.sprite_frames = frames
 	speed = set_speed
 	damage = set_damage
 	balloonType = type
 	next_bln = next_type
+	moneyAmount = money
 
 func _physics_process(delta):
 	path_follow.set_progress(path_follow.get_progress() + speed + delta)
@@ -38,11 +40,17 @@ func _physics_process(delta):
 
 func balloonHit():
 	if balloonType == "red":
+		givemoney()
 		removeSelf()
 	else:
 		mainMap.newBalloon(next_bln, get_parent().progress)
+		givemoney()
 		removeSelf()
 
 func removeSelf():
 	get_parent().queue_free()
 	self.queue_free()
+	
+func givemoney():
+	print(moneyAmount)
+	mainMap.money += moneyAmount
