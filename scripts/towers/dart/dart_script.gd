@@ -31,6 +31,8 @@ var upgrades = {
 }
 
 func _ready():
+	$AnimatedSprite2D.play('idle')
+	connectSignals()
 	mainMap = get_parent().get_parent()
 	uiScript = get_parent().get_parent().get_node("UI")
 	audioPlayer = $AudioStreamPlayer2D
@@ -44,7 +46,8 @@ func _ready():
 	#meshNode.scale = Vector2(20,20)
 
 func _process(_delta):
-	print(mouseInside)
+	print(clicked)
+	print(meshNode.modulate)
 	if placed:
 		if clicked:meshNode.modulate.a = 0.2; mainMap.selectedMonkey = self
 		else:meshNode.modulate.a = 0
@@ -67,6 +70,18 @@ func _process(_delta):
 			mainMap.placing = false
 			placed = true
 			placeable = false
+
+func connectSignals():
+	var main = get_node('main')
+	main.area_entered.connect(_on_area_entered)
+	main.area_exited.connect(_on_area_exited)
+	main.input_event.connect(_on_main_input_event)
+	main.mouse_entered.connect(_on_main_mouse_entered)
+	main.mouse_exited.connect(_on_main_mouse_exited)
+	var range = get_node('rangeCol')
+	range.area_entered.connect(_on_range_col_area_entered)
+	var timer = get_node("attackCooldown")
+	timer.timeout.connect(_on_attack_cooldown_timeout)
 
 func setRangeToNull():
 	meshNode.scale = Vector2(1,1)
@@ -192,7 +207,6 @@ func _on_main_input_event(_viewport, event, _shape_idx):
 func _on_main_mouse_entered():
 	mouseInside = true
 	print("mouseInside")
-
 
 func _on_main_mouse_exited():
 	mouseInside = false

@@ -31,6 +31,9 @@ var upgrades = {
 }
 
 func _ready():
+	$AnimatedSprite2D.scale = Vector2(1.3,1.3)
+	$AnimatedSprite2D.play('tack_frames')
+	connectSignals()
 	mainMap = get_parent().get_parent()
 	uiScript = get_parent().get_parent().get_node("UI")
 	audioPlayer = $AudioStreamPlayer2D
@@ -53,7 +56,6 @@ func _process(_delta):
 		if arr.size() > 0:
 			nearest_body = getFurthestBody(arr)
 		if nearest_body:
-			rotate_towards(nearest_body.global_position)
 			if cooldownOff:
 				cooldownOff = false
 				attackCooldown.start()
@@ -67,6 +69,18 @@ func _process(_delta):
 			mainMap.placing = false
 			placed = true
 			placeable = false
+
+func connectSignals():
+	var main = get_node('main')
+	main.area_entered.connect(_on_area_entered)
+	main.area_exited.connect(_on_area_exited)
+	main.input_event.connect(_on_main_input_event)
+	main.mouse_entered.connect(_on_main_mouse_entered)
+	main.mouse_exited.connect(_on_main_mouse_exited)
+	var range = get_node('rangeCol')
+	range.area_entered.connect(_on_range_col_area_entered)
+	var timer = get_node("attackCooldown")
+	timer.timeout.connect(_on_attack_cooldown_timeout)
 
 func setRangeToNull():
 	meshNode.scale = Vector2(1,1)
@@ -137,16 +151,6 @@ func getFurthestBody(bodies):
 				furthestBody = body
 	return furthestBody
 
-func rotate_towards(target_position):
-	if animatedSprite:
-		var direction = (target_position - animatedSprite.global_position).normalized()
-		var angle_rad = atan2(direction.y, direction.x)
-		var angle_deg = rad_to_deg(angle_rad)
-		animatedSprite.rotation_degrees = angle_deg+90
-		degs = animatedSprite.rotation_degrees
-	else:
-		print("AnimatedSprite2D not found.")
-
 func can_shoot():
 	if attackCooldown.time_left > 0:
 		return false
@@ -157,8 +161,7 @@ func _on_range_col_area_entered(body):
 	if placed:
 		if body.is_in_group("Enemys"):
 			pass
-
-	
+ 
 func start_attack():
 	if placed:
 		var nearestbodyset = false
@@ -171,12 +174,12 @@ func start_attack():
 
 func attack():
 	var tack = preload("res://scenes/tack_projectile.tscn")
-	var degs = 0
+	var degs = -45
 	for i in range(8):
 		var instance = tack.instantiate()
 		degs = degs + 360/8
-		instance.rotationdegrees = degs
-		self.add_child(tack)
+		instance.rotering = degs
+		self.add_child(instance)
 
 func _on_attack_cooldown_timeout():
 	start_attack()

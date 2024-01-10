@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bic6tdmuax3g"]
+
+[ext_resource type="Script" path="res://scenes/test/testscript.gd" id="1_15622"]
+[ext_resource type="PackedScene" uid="uid://bs0rc2qjorj7a" path="res://scenes/tower.tscn" id="2_3tpkm"]
+[ext_resource type="Script" path="res://scripts/towers/tack/tack_script.gd" id="3_282yv"]
+
+[node name="Testscene" type="Node2D"]
+script = ExtResource("1_15622")
+
+[node name="tower" parent="." instance=ExtResource("2_3tpkm")]
+script = ExtResource("3_282yv")

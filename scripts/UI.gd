@@ -4,10 +4,21 @@ var knapp
 var selectedMonkey
 var roundActive = false
 var map
+var selectedTowerType = ''
+var dartButton
+var tackButton
 
 func _ready():
 	knapp = $Control/MarginContainer/VBoxContainer/HBoxContainer/Button
 	map = get_parent()
+	var dartimg = preload('res://Assets/dart_icon.png')
+	var tackimg = preload('res://Assets/tack_tower.png')
+	#dartimg.resize(80,80,1)
+	#tackimg.resize(80,80,1)
+	dartButton = $Control/tower_tab/HBoxContainer/Button
+	tackButton = $Control/tower_tab/HBoxContainer/Button2
+	dartButton.set_button_icon(dartimg)
+	tackButton.set_button_icon(tackimg)
 
 func _on_button_button_down():
 	if roundActive == false:
