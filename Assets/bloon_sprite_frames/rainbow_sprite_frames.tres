@@ -1,12 +1,12 @@
-[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://1nmqung7da8k"]
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://bqkwapvjd8qgm"]
 
-[ext_resource type="Texture2D" uid="uid://dij6hbsa4fd3w" path="res://Assets/rainbow_bln.png" id="1_y561k"]
+[ext_resource type="Texture2D" uid="uid://cf5xysn8l17o8" path="res://Assets/Bloons/rainbow_bln.png" id="1_xxap8"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_y561k")
+"texture": ExtResource("1_xxap8")
 }],
 "loop": true,
 "name": &"default",
