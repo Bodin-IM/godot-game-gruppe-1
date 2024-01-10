@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh2joby61o72h"]
+[gd_scene load_steps=9 format=3 uid="uid://bh2joby61o72h"]
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_dkw8j"]
 
@@ -16,6 +16,11 @@ font_color = Color(0.768627, 0.392157, 0, 1)
 bg_color = Color(0.294118, 0.133333, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_l517u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxdmv"]
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_475tx"]
 
 [node name="UI" type="CanvasLayer" groups=["ui"]]
 script = ExtResource("1_dkw8j")
@@ -75,10 +80,15 @@ layout_mode = 2
 
 [node name="startKnapp" type="HBoxContainer" parent="Control/tower_tab"]
 layout_mode = 0
-offset_left = 83.0
-offset_top = 584.0
-offset_right = 184.0
+offset_left = 2.0
+offset_top = 585.0
+offset_right = 187.0
 offset_bottom = 646.0
+alignment = 1
+
+[node name="Button2" type="Button" parent="Control/tower_tab/startKnapp"]
+layout_mode = 2
+text = "Menu"
 
 [node name="Button" type="Button" parent="Control/tower_tab/startKnapp"]
 layout_mode = 2
@@ -126,6 +136,22 @@ layout_mode = 2
 layout_mode = 2
 text = "Upgrade 2"
 
+[node name="healthlabel" type="Label" parent="."]
+offset_right = 68.0
+offset_bottom = 37.0
+label_settings = SubResource("LabelSettings_pxdmv")
+
+[node name="Label" type="Label" parent="."]
+z_index = 50
+offset_left = 978.0
+offset_top = 550.0
+offset_right = 1136.0
+offset_bottom = 578.0
+text = "Current Round: 0"
+label_settings = SubResource("LabelSettings_475tx")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Control/tower_tab/startKnapp/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="button_down" from="Control/tower_tab/startKnapp/Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="Control/Upgrade_tab/HBoxContainer/knappL/venstreKnapp" to="." method="_on_venstre_knapp_button_down"]
 [connection signal="button_down" from="Control/Upgrade_tab/HBoxContainer/knappR/høyreKnapp" to="." method="_on_høyre_knapp_button_down"]

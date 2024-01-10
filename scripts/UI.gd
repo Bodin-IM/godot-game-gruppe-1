@@ -30,3 +30,7 @@ func _on_venstre_knapp_button_down():
 
 func _on_høyre_knapp_button_down():
 	map.initUpgrade("R")
+
+func _on_button_2_pressed():
+	get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
+	

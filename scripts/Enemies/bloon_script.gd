@@ -2,8 +2,8 @@ extends Area2D
 var temp_global_money
 var temp_global_life = 100
 var anim
-var damage = 1
-var speed = 2
+var damage
+var speed
 var path_follow
 var progress = 0
 var balloonType = ""
@@ -31,7 +31,7 @@ func _physics_process(delta):
 	progress = progress + speed
 	
 	if path_follow.progress_ratio == 1.0:
-		temp_global_life -= 1
+		mainMap.health -= damage
 		removeSelf()
 	if Input.is_action_just_pressed("ui_up"): #Testing instance remove later
 		$popped.start()

@@ -1,5 +1,8 @@
 extends Node2D
 
+var money = 200
+var health = 100
+
 var path
 var current_wave = -1
 var waves
@@ -34,6 +37,9 @@ func _ready():
 	infoSlot = ui.get_node("Upgrade_tab/HBoxContainer/HBoxContainer/label/infoLabel")
 
 func _process(_delta):
+	checkHealth()
+	get_node('UI').get_node('healthlabel').text = str(health)
+	print($TileMap/path/Path2D.get_child_count())
 	if Input.is_action_just_pressed("normalClick"):
 		var towerNodes = get_node("TileMap").get_children()
 		var towerFound = false
@@ -73,8 +79,13 @@ func checkPlacement(towerType):
 			instance.set_script(script)
 		$TileMap.add_child(instance)
 	
+func checkHealth():
+	if health < 1:
+		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+
 func startRound():
 	if path.get_child_count() < 1:
+		$UI/Label.text = 'Current Round: ' + str(current_round+2)
 		ui.get_node("tower_tab/startKnapp/Button").text = "Round Active"
 		round_summon()
 		
