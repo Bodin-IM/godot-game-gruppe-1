@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnjm2j0ccok2k"]
+[gd_scene load_steps=5 format=3 uid="uid://cnjm2j0ccok2k"]
 
 [ext_resource type="Script" path="res://scripts/menu scripts/menuscript.gd" id="1_xkysu"]
 [ext_resource type="Texture2D" uid="uid://j7uesiuqytkl" path="res://Forest_Landscape.jpg" id="2_rwi43"]
 [ext_resource type="AudioStream" uid="uid://c0g8def6wamy6" path="res://music/map_1_music.mp3.mp3" id="3_4jwbk"]
+[ext_resource type="Texture2D" uid="uid://bfwpexvxw6xsb" path="res://scenes/menu/th-removebg-preview (1).png" id="4_k5blb"]
 
 [node name="settings" type="Control"]
 layout_mode = 3
@@ -40,6 +41,14 @@ text = "back to menu
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_4jwbk")
 autoplay = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 316.0
+offset_right = 446.0
+offset_bottom = 356.0
+texture = ExtResource("4_k5blb")
 
 [connection signal="value_changed" from="TextureRect/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="TextureRect/back" to="." method="_on_back_pressed"]
