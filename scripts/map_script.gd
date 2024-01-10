@@ -13,7 +13,7 @@ var blue_sprite_frames = preload("res://Assets/bloon_sprite_frames/blue_sprite_f
 var bloon_scene = preload("res://scenes/enemys/Red_bloon.tscn")
 var balloons
 var testProg = 0
-var selectedMonkey
+var selectedMonkey = ''
 var ui
 var up1
 var up2
@@ -54,13 +54,24 @@ func _process(_delta):
 			selectedUpgrade.monkey = null
 	if Input.is_action_just_pressed("fKeyPressed"):
 		startRound()
-	checkPlacement()
-	
-func checkPlacement():
+	if Input.is_action_just_pressed("w"):
+		selectedMonkey='tack';checkPlacement('tack')
 	if Input.is_action_just_pressed("q"):
-		if !placing:
-			placing = true
-			$TileMap.add_child(preload("res://scenes/dart.tscn").instantiate())	
+		selectedMonkey='dart';checkPlacement('dart')
+		
+func checkPlacement(towerType):
+	if !placing:
+		placing = true
+		var towersc = preload("res://scenes/tower.tscn")
+		var instance = towersc.instantiate()
+		var script
+		if (selectedMonkey == 'dart'):
+			script = ResourceLoader.load("res://scripts/towers/dart/dart_script.gd")
+			instance.set_script(script)
+		elif (selectedMonkey == 'tack'):
+			script = ResourceLoader.load("res://scripts/towers/tack/tack_script.gd")
+			instance.set_script(script)
+		$TileMap.add_child(instance)
 	
 func startRound():
 	if path.get_child_count() < 1:

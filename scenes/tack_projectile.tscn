@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgcwt1oopns06"]
+
+[ext_resource type="Script" path="res://scripts/towers/tack/tackProjectile.gd" id="1_xo7es"]
+[ext_resource type="Texture2D" uid="uid://ciuq3sdcuyd54" path="res://Assets/tack.png" id="2_mee2c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vvee"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mee2c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u57yu"]
+radius = 0.3
+height = 5.1368
+
+[node name="tack_projectile" type="Area2D"]
+scale = Vector2(9, 9)
+script = ExtResource("1_xo7es")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 0.820305
+scale = Vector2(0.045, 0.045)
+sprite_frames = SubResource("SpriteFrames_0vvee")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.666667)
+scale = Vector2(0.52, 0.52)
+shape = SubResource("CapsuleShape2D_u57yu")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

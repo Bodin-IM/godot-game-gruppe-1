@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs0rc2qjorj7a"]
+[gd_scene load_steps=11 format=3 uid="uid://bs0rc2qjorj7a"]
 
-[ext_resource type="Script" path="res://scripts/towers/dart/dart_script.gd" id="1_3ld5w"]
 [ext_resource type="Texture2D" uid="uid://cpofpbi4l2l7l" path="res://Assets/darts.png" id="1_12dvc"]
+[ext_resource type="Texture2D" uid="uid://d3hkeo3tq8cju" path="res://Assets/tack_tower.png" id="2_ttaek"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ktkjf"]
 atlas = ExtResource("1_12dvc")
 region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svuk7"]
+atlas = ExtResource("2_ttaek")
+region = Rect2(0, 0, 85, 88)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m75qx"]
 animations = [{
@@ -15,6 +19,19 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svuk7")
+}],
+"loop": true,
+"name": &"tack_frames",
 "speed": 5.0
 }]
 
@@ -31,13 +48,14 @@ height = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0dmd8"]
 
 [node name="tower" type="Area2D"]
-script = ExtResource("1_3ld5w")
+z_index = 3
+scale = Vector2(0.255, 0.255)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["towers"]]
 z_index = 3
 sprite_frames = SubResource("SpriteFrames_m75qx")
-animation = &"idle"
-offset = Vector2(0, -15)
+animation = &"tack_frames"
+offset = Vector2(0, -1.5)
 
 [node name="rangeCol" type="Area2D" parent="."]
 z_index = 1
